@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_start_navigation_view">8dp</dimen>
+    <dimen name="margin_top_navigation_view">8dp</dimen>
+    <dimen name="margin_end_navigation_view">8dp</dimen>
+    <dimen name="width_view_line">45dp</dimen>
+    <dimen name="height_view_line">2dp</dimen>
+    <dimen name="margin_top_view_line">5dp</dimen>
+    <dimen name="behavior_peekHeight">50dp</dimen>
+    <dimen name="padding_start_constrain">10dp</dimen>
+    <dimen name="padding_end_constrain">10dp</dimen>
+</resources>

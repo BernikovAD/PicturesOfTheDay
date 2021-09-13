@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">PicturesOfTheDay</string>
+    <string name="photo_of_the_day_stub">Фото дня</string>
+    <string name="search_wiki">Найти в Википедии</string>
+    <string name="wiki_helper_text">Поищите термин в википедии</string>
+    <string name="favourite">Like</string>
+    <string name="settings">Настройки</string>
+    <string name="search">Поиск</string>
+    <string name="default_string">Default</string>
+    <string name="entry_string">Entry</string>
+    <string name="choice_string">Choice</string>
+    <string name="action_string">Action</string>
+    <string name="filter_string">Filter</string>
+    <string name="background_color_string">Background Color</string>
+    <string name="ripple_color_string">Ripple Color</string>
+    <string name="chip_icon_string">Chip icon</string>
+    <string name="color_red_string">Color Red</string>
+    <string name="color_black_string">Color Black</string>
+    <string name="color_grey_string">Color Grey</string>
+    <string name="color_green_string">Color Green</string>
+    <string name="color_yelow_string">Color Yelow</string>
+    <string name="color_blue_string">Color Blue</string>
+</resources>
