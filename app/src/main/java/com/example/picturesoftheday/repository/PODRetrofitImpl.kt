@@ -12,8 +12,4 @@ class PODRetrofitImpl {
             .build().create(PODAPI::class.java)
     }
 
-
-
-
-
 }

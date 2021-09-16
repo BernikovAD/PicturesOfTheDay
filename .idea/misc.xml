@@ -14,17 +14,24 @@
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_no_photo_vector.xml" value="0.3212962962962963" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_plus_fab.xml" value="0.3212962962962963" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_settings_menu.xml" value="0.3212962962962963" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_theme_1.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_theme_2.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_theme_3.xml" value="0.3769230769230769" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_wikipedia.xml" value="0.3212962962962963" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/activity_main.xml" value="0.27870370370370373" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/bottom_navigation_layout.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_chips.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_main.xml" value="0.16083333333333333" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_progress.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_settings.xml" value="0.2015625" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/include_chips.xml" value="0.25906735751295334" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/menu-v26/menu_bottom_navigation.xml" value="0.2015625" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/menu-v26/menu_set_theme.xml" value="0.190625" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/menu/menu_bottom_bar.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/menu/menu_bottom_bar_other_screen.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/menu/menu_set_theme.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3769230769230769" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.22135416666666666" />
       </map>

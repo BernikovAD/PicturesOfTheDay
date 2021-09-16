@@ -3,7 +3,10 @@ package com.example.picturesoftheday.view.picture
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.*
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -11,7 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
-import com.example.picturesoftheday.MainActivity
+import com.example.picturesoftheday.view.MainActivity
 import com.example.picturesoftheday.R
 import com.example.picturesoftheday.databinding.FragmentMainBinding
 import com.example.picturesoftheday.view.BottomNavigationDrawerFragment
@@ -28,6 +31,7 @@ class FragmentMain : Fragment() {
     private val binding: FragmentMainBinding
         get() = _binding!!
     private var isLike = false
+    private val copy = '©'
     private val viewModel: PODViewModel by lazy {
         ViewModelProvider(this).get(PODViewModel::class.java)
     }
@@ -41,40 +45,76 @@ class FragmentMain : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         setActionBar()
+        timeOutRemoveTimer.start()
         return binding.root
     }
 
+    val TOTAL_TIME = 10 * 100L
+    private var timeOutRemoveTimer = object : CountDownTimer(TOTAL_TIME, 10) {
+        override fun onFinish() {
+            binding.progressBar.progress = 1f
+        }
+
+        override fun onTick(millisUntilFinished: Long) {
+            binding.progressBar.progress = (TOTAL_TIME - millisUntilFinished).toFloat() / TOTAL_TIME
+            binding.statusLoading.text =
+                (((TOTAL_TIME - millisUntilFinished).toFloat() / TOTAL_TIME) * 100).toInt()
+                    .toString()
+        }
+    }
     private var isMain = true
     private fun setActionBar() {
         (context as MainActivity).setSupportActionBar(binding.bottomAppBar)
         setHasOptionsMenu(true)
         binding.fab.setOnClickListener {
-            isMain =  if (isMain) {
+            isMain = if (isMain) {
                 binding.bottomAppBar.navigationIcon = null
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                binding.fab.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_back_fab))
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_back_fab
+                    )
+                )
                 binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
                 false
             } else {
-                binding.bottomAppBar.navigationIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_hamburger_menu_bottom_bar)
+                binding.bottomAppBar.navigationIcon = ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_hamburger_menu_bottom_bar
+                )
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                binding.fab.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_plus_fab))
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_plus_fab
+                    )
+                )
                 binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
                 true
             }
         }
     }
-    companion object { fun newInstance() = FragmentMain() }
+
+    companion object {
+        fun newInstance() = FragmentMain()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         viewModel.sendServerRequest()
         binding.inputLayout.setEndIconOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse("https://ru.m.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
+                data =
+                    Uri.parse("https://ru.m.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
             }
             startActivity(intent)
         }
@@ -88,13 +128,17 @@ class FragmentMain : Fragment() {
                 Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
             }
             is PODData.Loading -> {
-                Toast.makeText(context, "Loading", Toast.LENGTH_LONG).show()
+                binding.scroll.visibility = GONE
+                binding.loadingView.visibility = VISIBLE
             }
             is PODData.Success -> {
+                binding.scroll.visibility = VISIBLE
+                binding.loadingView.visibility = GONE
                 binding.imageView.load(data.serverResponseData.url) {
                     error(R.drawable.ic_load_error_vector)
                 }
-                var text = "Дата : ${data.serverResponseData.date} \n ${data.serverResponseData.title} \n Copyringht ${data.serverResponseData.copyright} \n"
+                var text =
+                    "Дата : ${data.serverResponseData.date} \n ${data.serverResponseData.title} \n $copy ${data.serverResponseData.copyright} \n"
                 binding.includeLayout.textDiscriptionPOD.text = text
             }
         }
