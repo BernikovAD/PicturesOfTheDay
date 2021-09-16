@@ -60,6 +60,10 @@ class SettingsFragment : Fragment() {
             PrefConfing.save(requireContext(), 1)
             requireActivity().recreate()
         }
+/*        binding.bnt1.setOnClickListener{
+            PrefConfing.save(requireContext(), 4)
+            requireActivity().recreate()
+        }*/
         //Если присвоить ID то все ломается
         /*     binding.tabsSnake.getTabAt(0)?.apply {
                  text = "Работает"

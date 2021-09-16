@@ -80,10 +80,10 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bnt_1"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            style="@style/MyStyleButtonUnelevatedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btn" />
+            android:text="@string/btn_night_theme" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bnt_2"
