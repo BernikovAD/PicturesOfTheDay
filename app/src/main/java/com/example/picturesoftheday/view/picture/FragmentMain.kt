@@ -3,10 +3,7 @@ package com.example.picturesoftheday.view.picture
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.view.*
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -14,10 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
-import com.example.picturesoftheday.view.MainActivity
 import com.example.picturesoftheday.R
 import com.example.picturesoftheday.databinding.FragmentMainBinding
 import com.example.picturesoftheday.view.BottomNavigationDrawerFragment
+import com.example.picturesoftheday.view.MainActivity
 import com.example.picturesoftheday.view.settings.SettingsFragment
 import com.example.picturesoftheday.viewmodel.PODData
 import com.example.picturesoftheday.viewmodel.PODViewModel
@@ -52,23 +49,9 @@ class FragmentMain : Fragment() {
     ): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         setActionBar()
-        timeOutRemoveTimer.start()
         return binding.root
     }
 
-    val TOTAL_TIME = 10 * 100L
-    private var timeOutRemoveTimer = object : CountDownTimer(TOTAL_TIME, 10) {
-        override fun onFinish() {
-            binding.progressBar.progress = 1f
-        }
-
-        override fun onTick(millisUntilFinished: Long) {
-            binding.progressBar.progress = (TOTAL_TIME - millisUntilFinished).toFloat() / TOTAL_TIME
-            binding.statusLoading.text =
-                (((TOTAL_TIME - millisUntilFinished).toFloat() / TOTAL_TIME) * 100).toInt()
-                    .toString()
-        }
-    }
     private var isMain = true
     private fun setActionBar() {
         (context as MainActivity).setSupportActionBar(binding.bottomAppBar)
@@ -128,13 +111,13 @@ class FragmentMain : Fragment() {
                 Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
             }
             is PODData.Loading -> {
-                binding.scroll.visibility = GONE
-                binding.loadingView.visibility = VISIBLE
+                binding.imageView.load(R.drawable.progress_animation) {
+                    error(R.drawable.ic_load_error_vector)
+                }
             }
             is PODData.Success -> {
-                binding.scroll.visibility = VISIBLE
-                binding.loadingView.visibility = GONE
                 binding.imageView.load(data.serverResponseData.url) {
+                    placeholder(R.drawable.progress_animation)
                     error(R.drawable.ic_load_error_vector)
                 }
                 var text =

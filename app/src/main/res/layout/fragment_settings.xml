@@ -83,7 +83,7 @@
             style="@style/MyStyleButtonUnelevatedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btn_night_theme" />
+            android:text="@string/btn" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bnt_2"
