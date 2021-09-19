@@ -30,5 +30,9 @@
     <string name="btn_text_tab_3">Tab 3</string>
     <string name="btn_text_tab_2">Tab 2</string>
     <string name="btn_text_tab_1">Tab 1</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="planets">Planets</string>
 
 </resources>

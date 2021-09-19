@@ -48,15 +48,15 @@ class FragmentMain : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
-        setActionBar()
+        //setActionBar()
         return binding.root
     }
 
     private var isMain = true
-    private fun setActionBar() {
+   /* private fun setActionBar() {
         (context as MainActivity).setSupportActionBar(binding.bottomAppBar)
         setHasOptionsMenu(true)
-        binding.fab.setOnClickListener {
+*//*        binding.fab.setOnClickListener {
             isMain = if (isMain) {
                 binding.bottomAppBar.navigationIcon = null
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
@@ -83,9 +83,9 @@ class FragmentMain : Fragment() {
                 binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
                 true
             }
-        }
+        }*//*
     }
-
+*/
     companion object {
         fun newInstance() = FragmentMain()
     }

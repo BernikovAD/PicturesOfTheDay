@@ -22,23 +22,20 @@ class PODViewModel(
         liveDataToObserve.postValue(PODData.Loading)
         val apiKey = BuildConfig.NASA_API_KEY
         if (apiKey.isNotBlank()) {
-            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey).enqueue(
-                object : Callback<PODServerResponseData> {
-                    override fun onResponse(
-                        call: Call<PODServerResponseData>,
-                        response: Response<PODServerResponseData>
-                    ) {
-                        if (response.isSuccessful && response.body() != null) {
-                            liveDataToObserve.postValue(PODData.Success(response.body()!!))
-                        } else {
-
-                        }
-                    }
-
-                    override fun onFailure(call: Call<PODServerResponseData>, t: Throwable) {
-                    }
-                }
-            )
+            retrofitImpl.getPictureOfTheDay(apiKey,PODCallback)
         }
     }
-}
+    val PODCallback  = object : Callback<PODServerResponseData>{
+            override fun onResponse(
+                call: Call<PODServerResponseData>,
+                response: Response<PODServerResponseData>
+            ) {
+                if (response.isSuccessful && response.body() != null) {
+                    liveDataToObserve.postValue(PODData.Success(response.body()!!))
+                } else {
+                }
+            }
+            override fun onFailure(call: Call<PODServerResponseData>, t: Throwable) {
+            }
+        }
+    }

@@ -17,7 +17,7 @@
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/almendra_italic</item>
         <item name="android:windowBackground">@color/window_backgraund_theme_1</item>
-        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">@color/purple_500</item>
         <item name="textInputStyle">@style/CustomOutlinedBox</item>
     </style>
 

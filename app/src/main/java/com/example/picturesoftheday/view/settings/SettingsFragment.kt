@@ -2,6 +2,7 @@ package com.example.picturesoftheday.view.settings
 
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -69,24 +70,27 @@ class SettingsFragment : Fragment() {
                  text = "Работает"
              }*/
         val durationMs = 100L
-        binding.bnt1.alpha = 0f
-        binding.bnt2.alpha = 0f
-        binding.bnt3.alpha = 0f
-        binding.theme1.alpha = 0f
-        binding.theme2.alpha = 0f
-        binding.theme3.alpha = 0f
-        binding.tabsSnake.alpha = 0f
-        binding.bottomNavigationView.alpha = 0f
-        binding.includeChips.chipGroup.alpha = 0f
-        binding.includeChips.chipWithClose.alpha = 0f
-        binding.includeChips.chipDefoult.alpha = 0f
-        binding.includeChips.chipChoice.alpha = 0f
-        binding.includeChips.chipAction.alpha = 0f
-        binding.includeChips.chipFilter.alpha = 0f
-        binding.includeChips.chipBackgraund.alpha = 0f
-        binding.includeChips.chipRipple.alpha = 0f
-        binding.includeChips.chipIcon.alpha = 0f
-        binding.cardView.alpha = 0f
+        binding.apply {
+            bnt1.alpha = 0f
+            bnt2.alpha = 0f
+            bnt3.alpha = 0f
+            theme1.alpha = 0f
+            theme2.alpha = 0f
+            theme3.alpha = 0f
+            tabsSnake.alpha = 0f
+            bottomNavigationView.alpha = 0f
+            includeChips.chipGroup.alpha = 0f
+            includeChips.chipWithClose.alpha = 0f
+            includeChips.chipDefoult.alpha = 0f
+            includeChips.chipChoice.alpha = 0f
+            includeChips.chipAction.alpha = 0f
+            includeChips.chipFilter.alpha = 0f
+            includeChips.chipBackgraund.alpha = 0f
+            includeChips.chipRipple.alpha = 0f
+            includeChips.chipIcon.alpha = 0f
+            cardView.alpha = 0f
+        }
+
         fadeIn(binding.includeChips.chipDefoult, durationMs)
             .andThen(fadeIn(binding.includeChips.chipWithClose, durationMs))
             .andThen(fadeIn(binding.includeChips.chipChoice, durationMs))
@@ -123,6 +127,7 @@ class SettingsFragment : Fragment() {
             }
             true
         }
+
     }
 
     fun fadeIn(view: View, duration: Long): Completable {
