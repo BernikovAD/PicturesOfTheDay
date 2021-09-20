@@ -42,7 +42,7 @@ class SettingsFragment : Fragment() {
     @SuppressLint("CommitPrefEdits")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.includeChips.chipGroup.setOnCheckedChangeListener { childGroup, position ->
+        binding.includeChips.chipGroup.setOnCheckedChangeListener { _, position ->
             Toast.makeText(context, "Click $position ", Toast.LENGTH_SHORT).show()
         }
         binding.includeChips.chipWithClose.setOnCloseIconClickListener {

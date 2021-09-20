@@ -49,6 +49,25 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_no_photo_vector" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/prevImg"
+                style="@style/MyStyleButtonOutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/prev_img"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/chip_HD_picture"
+                app:layout_constraintTop_toBottomOf="@+id/image_view"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_HD_picture"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hd_url"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/prevImg"
+                app:layout_constraintTop_toBottomOf="@+id/image_view" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

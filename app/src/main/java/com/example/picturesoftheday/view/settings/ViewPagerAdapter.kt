@@ -5,7 +5,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.picturesoftheday.view.planets.FragmentEarth
 import com.example.picturesoftheday.view.planets.FragmentMars
 import com.example.picturesoftheday.view.planets.FragmentPlanets
-import com.example.picturesoftheday.view.planets.FragmentSystem
+import com.example.picturesoftheday.view.planets.FragmentSolar
 
 private const val EARTH = 0
 private const val MARS = 1
@@ -15,7 +15,7 @@ class ViewPagerAdapter(private val fragmentActivity: FragmentPlanets):
     FragmentStateAdapter(fragmentActivity) {
     private val fragments = arrayOf(
         FragmentEarth.newInstance(), FragmentMars.newInstance(),
-        FragmentSystem.newInstance())
+        FragmentSolar.newInstance())
     override fun getItemCount(): Int {
        return fragments.size
     }
