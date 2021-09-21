@@ -2,13 +2,12 @@ package com.example.picturesoftheday.viewmodel
 
 import android.annotation.SuppressLint
 import android.os.Build
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.picturesoftheday.BuildConfig
 import com.example.picturesoftheday.repository.PODRetrofitImpl
-import com.example.picturesoftheday.repository.dto.MarsServerResponseData
+import com.example.picturesoftheday.repository.dto.MarsPhotosServerResponseData
 import com.example.picturesoftheday.repository.dto.PODServerResponseData
 import com.example.picturesoftheday.repository.dto.SolarFlareResponseData
 import retrofit2.Call
@@ -52,7 +51,12 @@ class PODViewModel(
             retrofitImpl.getSolarFlareToday(today,apiKey,solarFlareCallback)
         }
     }
-    val PODCallback = object : Callback<PODServerResponseData> {
+    fun getMarsPicture() {
+        liveDataToObserve.postValue(AppState.Loading)
+        val earthDate = getDayBeforeYesterday()
+        retrofitImpl.getMarsPictureByDate(earthDate,BuildConfig.NASA_API_KEY, marsCallback)
+    }
+    private val PODCallback = object : Callback<PODServerResponseData> {
         override fun onResponse(
             call: Call<PODServerResponseData>,
             response: Response<PODServerResponseData>
@@ -65,7 +69,7 @@ class PODViewModel(
             liveDataToObserve.postValue(AppState.Error(t))
         }
     }
-    val PODCallbacklist = object : Callback<List<PODServerResponseData>> {
+    private val PODCallbacklist = object : Callback<List<PODServerResponseData>> {
         override fun onResponse(
             call: Call<List<PODServerResponseData>>,
             response: Response<List<PODServerResponseData>>
@@ -78,7 +82,7 @@ class PODViewModel(
             liveDataToObserve.postValue(AppState.Error(t))
         }
     }
-    val solarFlareCallback = object : Callback<List<SolarFlareResponseData>> {
+    private val solarFlareCallback = object : Callback<List<SolarFlareResponseData>> {
         override fun onResponse(
             call: Call<List<SolarFlareResponseData>>,
             response: Response<List<SolarFlareResponseData>>
@@ -92,41 +96,51 @@ class PODViewModel(
             liveDataToObserve.postValue(AppState.Error(t))
         }
     }
-    fun getMarsPicture() {
-        liveDataToObserve.postValue(AppState.Loading)
-        retrofitImpl.getMarsPictureByDate(1000,apiKey, marsCallback)
+     private fun getDayBeforeYesterday(): String {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val yesterday = LocalDateTime.now().minusDays(1)
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            return yesterday.format(formatter)
+        } else {
+            val cal: Calendar = Calendar.getInstance()
+            val s = SimpleDateFormat("yyyy-MM-dd")
+            cal.add(Calendar.DAY_OF_YEAR, -1)
+            return s.format(cal.time)
+        }
     }
-    private val marsCallback = object : Callback<List<MarsServerResponseData>> {
+
+    private val marsCallback = object : Callback<MarsPhotosServerResponseData> {
+
         override fun onResponse(
-            call: Call<List<MarsServerResponseData>>,
-            response: Response<List<MarsServerResponseData>>,
+            call: Call<MarsPhotosServerResponseData>,
+            response: Response<MarsPhotosServerResponseData>,
         ) {
             if (response.isSuccessful && response.body() != null) {
                 liveDataToObserve.postValue(AppState.SuccessMars(response.body()!!))
             } else {
                 val message = response.message()
                 if (message.isNullOrEmpty()) {
-                    liveDataToObserve.postValue(AppState.Error(Throwable("Unidentified error")))
+                    liveDataToObserve.postValue(AppState.Error(Throwable("dsfsdfsdfsdfsdf")))
                 } else {
                     liveDataToObserve.postValue(AppState.Error(Throwable(message)))
                 }
             }
         }
 
-        override fun onFailure(call: Call<List<MarsServerResponseData>>, t: Throwable) {
+        override fun onFailure(call: Call<MarsPhotosServerResponseData>, t: Throwable) {
             liveDataToObserve.postValue(AppState.Error(t))
         }
     }
     @SuppressLint("SimpleDateFormat")
     fun getDate(): String {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val yesterday = LocalDateTime.now()
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-            return yesterday.format(formatter)
+            yesterday.format(formatter)
         } else {
             val cal: Calendar = Calendar.getInstance()
             val s = SimpleDateFormat("yyyy-MM-dd")
-            return s.format(cal)
+            s.format(cal)
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.picturesoftheday.repository
 
+import com.example.picturesoftheday.repository.dto.MarsPhotosServerResponseData
 import com.example.picturesoftheday.repository.dto.MarsServerResponseData
 import com.example.picturesoftheday.repository.dto.PODServerResponseData
 import com.example.picturesoftheday.repository.dto.SolarFlareResponseData
@@ -46,11 +47,7 @@ class PODRetrofitImpl {
         api.getSolarFlare(startDate, endDate, apiKey).enqueue(podCallback)
     }
 
-    fun getMarsPictureByDate(
-        sol: Int,
-        apiKey: String,
-        marsCallbackByDate: Callback<List<MarsServerResponseData>>
-    ) {
-        api.getMarsImageByDate(sol, apiKey).enqueue(marsCallbackByDate)
+    fun getMarsPictureByDate(earth_date: String, apiKey: String, marsCallbackByDate: Callback<MarsPhotosServerResponseData>) {
+        api.getMarsImageByDate(earth_date, apiKey).enqueue(marsCallbackByDate)
     }
 }

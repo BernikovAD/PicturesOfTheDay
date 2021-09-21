@@ -1,5 +1,6 @@
 package com.example.picturesoftheday.repository
 
+import com.example.picturesoftheday.repository.dto.MarsPhotosServerResponseData
 import com.example.picturesoftheday.repository.dto.MarsServerResponseData
 import com.example.picturesoftheday.repository.dto.PODServerResponseData
 import com.example.picturesoftheday.repository.dto.SolarFlareResponseData
@@ -33,7 +34,7 @@ interface RetrofitAPI {
 
     @GET("/mars-photos/api/v1/rovers/curiosity/photos")
     fun getMarsImageByDate(
-        @Query("sol") sol: Int,
+        @Query("earth_date") earth_date: String,
         @Query("api_key") apiKey: String,
-    ): Call<List<MarsServerResponseData>>
+    ): Call<MarsPhotosServerResponseData>
 }

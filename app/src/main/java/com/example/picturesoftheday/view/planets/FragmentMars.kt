@@ -1,6 +1,7 @@
 package com.example.picturesoftheday.view.planets
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import com.example.picturesoftheday.databinding.FragmentMarsBinding
 import com.example.picturesoftheday.viewmodel.AppState
 import com.example.picturesoftheday.viewmodel.PODViewModel
 import com.google.android.material.snackbar.Snackbar
+import java.io.File
 
 class FragmentMars : Fragment() {
     private var _binding: FragmentMarsBinding? = null
@@ -52,7 +54,7 @@ class FragmentMars : Fragment() {
                 }
             }
             is AppState.SuccessMars -> {
-                binding.imgMars.load(appState.marsServerResponseData[0].imgSrc) {
+                binding.imgMars.load(appState.marsServerResponseData.photos.first().imgSrc) {
                     placeholder(R.drawable.progress_animation)
                     error(R.drawable.ic_load_error_vector)
                 }

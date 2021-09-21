@@ -4,40 +4,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/includeChips"
-        layout="@layout/include_chips" />
-
-    <LinearLayout
-        android:id="@+id/secondRow"
-        style="@style/linear_layout_tabs_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabsSnake"
-            style="@style/linear_layout_tabs_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_text_tab_1" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_text_tab_2" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_text_tab_3" />
-        </com.google.android.material.tabs.TabLayout>
-
-    </LinearLayout>
 
     <LinearLayout
         style="@style/linear_layout_tabs_layout"
@@ -48,7 +14,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/theme_1"
-            style="@style/MyStyleButton"
+            style="@style/MyStyleButtonOutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_text_theme_1" />
@@ -63,7 +29,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/theme_3"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/MyStyleButtonOutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:insetLeft="10dp"
@@ -71,64 +37,5 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        style="@style/linear_layout_tabs_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bnt_1"
-            style="@style/MyStyleButtonUnelevatedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bnt_2"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bnt_3"
-            style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        style="@style/linear_layout_tabs_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardView"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_margin="20dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="20dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        style="@style/linear_layout_tabs_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:menu="@menu/menu_set_theme" />
-    </LinearLayout>
 </LinearLayout>

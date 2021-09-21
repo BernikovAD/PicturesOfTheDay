@@ -5,15 +5,19 @@
 
 
     <item
-        android:id="@+id/app_bar_planets"
-        android:icon="@drawable/ic_home"
-        android:title="@string/home"
+        android:id="@+id/app_bar_earth"
+        android:icon="@drawable/ic_earth"
+        android:title="@string/earth"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/app_bar_fav"
+        android:id="@+id/app_bar_mars"
+        android:icon="@drawable/ic_mars"
+        android:title="@string/mars"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/app_bar_solar"
         android:icon="@drawable/ic_solar_system"
-        android:iconTint="@color/white"
-        android:title="@string/planets"
+        android:title="@string/solar"
         app:showAsAction="ifRoom" />
 
     <item

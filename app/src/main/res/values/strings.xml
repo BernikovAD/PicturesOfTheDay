@@ -30,12 +30,14 @@
     <string name="btn_text_tab_3">Tab 3</string>
     <string name="btn_text_tab_2">Tab 2</string>
     <string name="btn_text_tab_1">Tab 1</string>
-    <string name="home">Home</string>
-    <string name="planets">Planets</string>
+    <string name="earth">Earth</string>
+    <string name="solar">Solar</string>
+    <string name="mars">Mars</string>
     <string name="btn_today">Today</string>
     <string name="hd_url">HD</string>
     <string name="choice_date">Choice Date</string>
     <string name="prev_img">Previus picture</string>
     <string name="solar_flares">Solar flares</string>
+    <string name="picture_of_the_day_from_mars">Picture of the day from Mars</string>
 
 </resources>
