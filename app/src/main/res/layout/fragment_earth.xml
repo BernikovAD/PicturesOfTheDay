@@ -8,9 +8,7 @@
     <include
         android:id="@+id/include_earth"
         layout="@layout/include_earth" />
-
     <include
         android:id="@+id/include_layout"
         layout="@layout/bottom_sheet_layout" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

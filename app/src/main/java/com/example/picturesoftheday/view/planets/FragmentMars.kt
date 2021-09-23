@@ -9,15 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
 import com.example.picturesoftheday.R
-import com.example.picturesoftheday.databinding.FragmentMarsBinding
+import com.example.picturesoftheday.databinding.FragmentMarsStartBinding
 import com.example.picturesoftheday.viewmodel.AppState
 import com.example.picturesoftheday.viewmodel.PODViewModel
 import com.google.android.material.snackbar.Snackbar
 import java.io.File
 
 class FragmentMars : Fragment() {
-    private var _binding: FragmentMarsBinding? = null
-    private val binding: FragmentMarsBinding
+    private var _binding: FragmentMarsStartBinding? = null
+    private val binding: FragmentMarsStartBinding
         get() = _binding!!
     private val viewModel: PODViewModel by lazy {
         ViewModelProvider(this).get(PODViewModel::class.java)
@@ -32,7 +32,7 @@ class FragmentMars : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMarsBinding.inflate(inflater, container, false)
+        _binding = FragmentMarsStartBinding.inflate(inflater, container, false)
         return binding.root
     }
 

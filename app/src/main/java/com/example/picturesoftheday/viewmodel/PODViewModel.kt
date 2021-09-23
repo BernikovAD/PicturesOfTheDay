@@ -98,13 +98,13 @@ class PODViewModel(
     }
      private fun getDayBeforeYesterday(): String {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val yesterday = LocalDateTime.now().minusDays(1)
+            val yesterday = LocalDateTime.now().minusDays(2)
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             return yesterday.format(formatter)
         } else {
             val cal: Calendar = Calendar.getInstance()
             val s = SimpleDateFormat("yyyy-MM-dd")
-            cal.add(Calendar.DAY_OF_YEAR, -1)
+            cal.add(Calendar.DAY_OF_YEAR, -2)
             return s.format(cal.time)
         }
     }
