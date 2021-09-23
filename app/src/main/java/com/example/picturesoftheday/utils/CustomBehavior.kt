@@ -2,11 +2,13 @@ package com.example.picturesoftheday.utils
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
+import android.view.MotionEvent
 import android.view.View
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.widget.NestedScrollView
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.snackbar.Snackbar
 import kotlin.math.max
 
 /**
@@ -19,22 +21,22 @@ class CustomBehavior @JvmOverloads constructor(
         parent: CoordinatorLayout,
         child: View,
         dependency: View
-    )= dependency is AppBarLayout
+    )= dependency is NestedScrollView
 
-    override fun onDependentViewChanged(
+
+
+    override fun onInterceptTouchEvent(
         parent: CoordinatorLayout,
         child: View,
-        dependency: View
+        ev: MotionEvent
     ): Boolean {
-        val appBar = dependency as AppBarLayout
-        // т.к. y - отрицательное число
-        val currentAppBarHeight = appBar.height + appBar.y
-        val parentHeight = parent.height ?: 0
-        val placeHolderHeight = (parentHeight - currentAppBarHeight).toInt()
-        child.layoutParams?.height = placeHolderHeight
-        child.requestLayout()
-        return false
+
+        Log.i("MyTag",
+            " \nparent ${parent.alpha} \nchild ${child.alpha}")
+        child.alpha = 1f
+        parent.alpha = 0f
+
+        return super.onInterceptTouchEvent(parent, child, ev)
     }
 }
-
 

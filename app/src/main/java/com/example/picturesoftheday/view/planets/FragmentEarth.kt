@@ -5,25 +5,29 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
 import com.example.picturesoftheday.R
 import com.example.picturesoftheday.databinding.FragmentEarthBinding
+import com.example.picturesoftheday.utils.CustomBehavior
 import com.example.picturesoftheday.view.settings.PrefConfing
 import com.example.picturesoftheday.viewmodel.AppState
 import com.example.picturesoftheday.viewmodel.PODViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HIDDEN
 import java.util.*
 
 
 class FragmentEarth : Fragment() {
-   // private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+
     private var _binding: FragmentEarthBinding? = null
     private val binding: FragmentEarthBinding
         get() = _binding!!
@@ -58,10 +62,6 @@ class FragmentEarth : Fragment() {
         viewModel.getPOD()
         val c = Calendar.getInstance()
 
-
-        //bottomSheetBehavior = BottomSheetBehavior.from(binding.includeLayout.bottomSheetContainer)
-        //bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-
         binding.inputLayout.setEndIconOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW).apply {
                 data =
@@ -90,9 +90,6 @@ class FragmentEarth : Fragment() {
             PrefConfing.save(requireContext(), isHD)
         }
 
-/*        binding.includeEarth.infoPod.setOnClickListener {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
-        }*/
 
     }
 

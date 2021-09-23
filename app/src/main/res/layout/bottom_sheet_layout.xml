@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:behavior_hideable="true"
-    android:background="@color/white"
+    android:background="@color/grey"
     app:behavior_peekHeight="@dimen/behavior_peekHeight"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
@@ -20,6 +20,7 @@
     <TextView
         android:id="@+id/text_discription_POD"
         style="@style/my_text_view"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
