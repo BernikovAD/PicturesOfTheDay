@@ -42,13 +42,13 @@
         android:id="@+id/img_mars"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/GL_80_Horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/GL_85_Horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/GL_80_Horizontal"
+        android:id="@+id/GL_85_Horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"

@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.widget.NestedScrollView
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.snackbar.Snackbar
 import kotlin.math.max
 
@@ -17,37 +19,21 @@ class CustomBehavior @JvmOverloads constructor(
         parent: CoordinatorLayout,
         child: View,
         dependency: View
-    ): Boolean {
-        return dependency is Snackbar.SnackbarLayout
-    }
+    )= dependency is AppBarLayout
 
     override fun onDependentViewChanged(
         parent: CoordinatorLayout,
         child: View,
         dependency: View
     ): Boolean {
-        if (parent == null || child == null || dependency == null)
-            return false
-
-        val distanceY = getViewOffsetForSnackbar(parent, child)
-        val fractionComplete = distanceY / dependency.height
-        val scaleFactor = 1 - fractionComplete
-
-        child.scaleX = scaleFactor
-        child.scaleY = scaleFactor
-        return true
-    }
-
-    private fun getViewOffsetForSnackbar(parent: CoordinatorLayout, view: View): Float{
-        var maxOffset = 0f
-        val dependencies = parent.getDependencies(view)
-
-        dependencies.forEach { dependency ->
-            if (dependency is Snackbar.SnackbarLayout && parent.doViewsOverlap(view, dependency)){
-                maxOffset = max(maxOffset, (dependency.translationY - dependency.height) * -1)
-            }
-        }
-        return maxOffset
+        val appBar = dependency as AppBarLayout
+        // т.к. y - отрицательное число
+        val currentAppBarHeight = appBar.height + appBar.y
+        val parentHeight = parent.height ?: 0
+        val placeHolderHeight = (parentHeight - currentAppBarHeight).toInt()
+        child.layoutParams?.height = placeHolderHeight
+        child.requestLayout()
+        return false
     }
 }
 

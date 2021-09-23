@@ -23,7 +23,7 @@ import java.util.*
 
 
 class FragmentEarth : Fragment() {
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+   // private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private var _binding: FragmentEarthBinding? = null
     private val binding: FragmentEarthBinding
         get() = _binding!!
@@ -52,47 +52,47 @@ class FragmentEarth : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         isHD = PrefConfing.loadBol(requireContext())
-        if (isHD) binding.includeEarth.HDPicture.setImageResource(R.drawable.ic_hd)
-        else binding.includeEarth.HDPicture.setImageResource(R.drawable.ic_no_hd)
+        if (isHD) binding.HDPicture.setImageResource(R.drawable.ic_hd)
+        else binding.HDPicture.setImageResource(R.drawable.ic_no_hd)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         viewModel.getPOD()
         val c = Calendar.getInstance()
 
 
-        bottomSheetBehavior = BottomSheetBehavior.from(binding.includeLayout.bottomSheetContainer)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        //bottomSheetBehavior = BottomSheetBehavior.from(binding.includeLayout.bottomSheetContainer)
+        //bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
 
-        binding.includeEarth.inputLayout.setEndIconOnClickListener {
+        binding.inputLayout.setEndIconOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW).apply {
                 data =
-                    Uri.parse("https://ru.m.wikipedia.org/wiki/${binding.includeEarth.inputEditText.text.toString()}")
+                    Uri.parse("https://ru.m.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
             }
             startActivity(intent)
         }
 
 
-        binding.includeEarth.prevImg.setOnClickListener {
+        binding.prevImg.setOnClickListener {
             c.add(Calendar.DATE, -1)
             var date =
                 "${c.get(Calendar.YEAR)}-0${c.get(Calendar.MONTH) + 1}-${c.get(Calendar.DAY_OF_MONTH)}"
             viewModel.getPOD(date, date)
         }
 
-        binding.includeEarth.HDPicture.setOnClickListener {
+        binding.HDPicture.setOnClickListener {
             if (isHD) {
-                binding.includeEarth.HDPicture.setImageResource(R.drawable.ic_hd)
+                binding.HDPicture.setImageResource(R.drawable.ic_hd)
                 viewModel.getPOD()
             } else {
-                binding.includeEarth.HDPicture.setImageResource(R.drawable.ic_no_hd)
+                binding.HDPicture.setImageResource(R.drawable.ic_no_hd)
                 viewModel.getPOD()
             }
             isHD = !isHD
             PrefConfing.save(requireContext(), isHD)
         }
 
-        binding.includeEarth.infoPod.setOnClickListener {
+/*        binding.includeEarth.infoPod.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
-        }
+        }*/
 
     }
 
@@ -102,24 +102,24 @@ class FragmentEarth : Fragment() {
                 Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
             }
             is AppState.Loading -> {
-                binding.includeEarth.imageView.load(R.drawable.progress_animation) {
+                binding.imageView.load(R.drawable.progress_animation) {
                     error(R.drawable.ic_load_error_vector)
                 }
             }
             is AppState.SuccessPODDate -> {
-                binding.includeEarth.imageView.load(data.serverResponseData[0].url) {
+                binding.imageView.load(data.serverResponseData[0].url) {
                     placeholder(R.drawable.progress_animation)
                     error(R.drawable.ic_load_error_vector)
                     when (PrefConfing.loadBol(requireContext())) {
                         true -> {
-                            binding.includeEarth.imageView.load(data.serverResponseData[0].hdurl) {
+                            binding.imageView.load(data.serverResponseData[0].hdurl) {
                                 placeholder(R.drawable.progress_animation)
                                 error(R.drawable.ic_load_error_vector)
                             }
                         }
 
                         false -> {
-                            binding.includeEarth.imageView.load(data.serverResponseData[0].url) {
+                            binding.imageView.load(data.serverResponseData[0].url) {
                                 placeholder(R.drawable.progress_animation)
                                 error(R.drawable.ic_load_error_vector)
                             }
@@ -127,30 +127,30 @@ class FragmentEarth : Fragment() {
                     }
                     var text =
                         "${data.serverResponseData[0].date}\n${data.serverResponseData[0].title}"
-                    binding.includeLayout.textDiscriptionPOD.text = text
+                    binding.textDiscriptionPOD.text = text
                 }
             }
             is AppState.Success -> {
-                binding.includeEarth.imageView.load(data.serverResponseData.url) {
+                binding.imageView.load(data.serverResponseData.url) {
                     placeholder(R.drawable.progress_animation)
                     error(R.drawable.ic_load_error_vector)
                     when (PrefConfing.loadBol(requireContext())) {
                         true -> {
-                            binding.includeEarth.imageView.load(data.serverResponseData.hdurl) {
+                            binding.imageView.load(data.serverResponseData.hdurl) {
                                 placeholder(R.drawable.progress_animation)
                                 error(R.drawable.ic_load_error_vector)
                             }
                         }
 
                         false -> {
-                            binding.includeEarth.imageView.load(data.serverResponseData.url) {
+                            binding.imageView.load(data.serverResponseData.url) {
                                 placeholder(R.drawable.progress_animation)
                                 error(R.drawable.ic_load_error_vector)
                             }
                         }
                     }
                     var text = "${data.serverResponseData.date}\n${data.serverResponseData.title}"
-                    binding.includeLayout.textDiscriptionPOD.text = text
+                    binding.textDiscriptionPOD.text = text
                 }
             }
         }

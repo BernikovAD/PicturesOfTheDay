@@ -8,14 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.picturesoftheday.databinding.FragmentSolarBinding
+import com.example.picturesoftheday.databinding.FragmentSolarStartBinding
 import com.example.picturesoftheday.viewmodel.AppState
 import com.example.picturesoftheday.viewmodel.PODViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class FragmentSolar : Fragment() {
-    private var _binding: FragmentSolarBinding? = null
-    private val binding: FragmentSolarBinding
+    private var _binding: FragmentSolarStartBinding? = null
+    private val binding: FragmentSolarStartBinding
         get() = _binding!!
     private val viewModel: PODViewModel by lazy {
         ViewModelProvider(this).get(PODViewModel::class.java)
@@ -30,7 +30,7 @@ class FragmentSolar : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSolarBinding.inflate(inflater, container, false)
+        _binding = FragmentSolarStartBinding.inflate(inflater, container, false)
         return binding.root
     }
 

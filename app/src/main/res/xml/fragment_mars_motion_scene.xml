@@ -54,7 +54,7 @@
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toTopOf="@+id/GL_80_Horizontal"
+            motion:layout_constraintBottom_toTopOf="@+id/GL_85_Horizontal"
             motion:layout_constraintTop_toBottomOf="@+id/textView"
             android:alpha="1"
             motion:layout_constraintStart_toStartOf="parent" />
