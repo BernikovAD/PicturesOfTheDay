@@ -40,4 +40,6 @@
     <string name="solar_flares">Solar flares</string>
     <string name="picture_of_the_day_from_mars">Picture of the day from Mars</string>
     <string name="picture_of_the_day_from_earth">Picture of the day</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

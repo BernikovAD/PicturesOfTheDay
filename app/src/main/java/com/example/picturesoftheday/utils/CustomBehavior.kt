@@ -9,11 +9,11 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.widget.NestedScrollView
+import com.example.picturesoftheday.R
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.snackbar.Snackbar
 import kotlin.math.max
 
-/**
- * Кастомный Behavior, позволяющий View занимать ровно то место, которое осталось между AppBarLayout и нижнем краем экрана
- */
 class CustomBehavior @JvmOverloads constructor(
     context: Context? = null, attrs: AttributeSet? = null) : CoordinatorLayout.Behavior<View>(context, attrs) {
 
@@ -23,20 +23,22 @@ class CustomBehavior @JvmOverloads constructor(
         dependency: View
     )= dependency is NestedScrollView
 
-
-
     override fun onInterceptTouchEvent(
         parent: CoordinatorLayout,
         child: View,
         ev: MotionEvent
     ): Boolean {
-
-        Log.i("MyTag",
-            " \nparent ${parent.alpha} \nchild ${child.alpha}")
-        child.alpha = 1f
-        parent.alpha = 0f
-
+        Log.i("MyTag", "parent ${parent.alpha}  \nchild ${child.alpha}")
+        if(child.alpha == 0f && parent.findViewById<NestedScrollView>(R.id.scroll).alpha == 1f){
+            child.alpha = 1f
+            parent.findViewById<NestedScrollView>(R.id.scroll).alpha = 0f
+        }else{
+            child.alpha = 0f
+            parent.findViewById<NestedScrollView>(R.id.scroll).alpha = 1f
+        }
         return super.onInterceptTouchEvent(parent, child, ev)
     }
+
+
 }
 

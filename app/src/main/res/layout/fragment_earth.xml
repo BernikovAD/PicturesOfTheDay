@@ -5,173 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+<include layout="@layout/include_earth"
+    android:layout_gravity="center"
+    android:id="@+id/include_earth"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent" />
+
+    <FrameLayout
+        android:layout_gravity="bottom"
+        android:id="@+id/frame_text_discription"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/GL_10_Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/logo_earth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/GL_10_Horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/GL_10_Horizontal"
-            app:srcCompat="@drawable/bg_earth" />
+        android:layout_height="wrap_content"
+        android:paddingBottom="?attr/actionBarSize"
+        android:alpha="1.0"
+        app:layout_behavior=".utils.CustomBehavior"
+        android:background="@color/grey"
+        app:behavior_peekHeight="@dimen/behavior_peekHeight">
 
         <TextView
-            android:id="@+id/discription_earth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/picture_of_the_day_from_earth"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/coordinator"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logo_earth" />
-
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/coordinator"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/GL_75_Horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/discription_earth">
-
-            <androidx.core.widget.NestedScrollView
-                android:id="@+id/scroll"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:alpha="1"
-                app:layout_behavior=".utils.CustomBehavior">
-
-                <androidx.coordinatorlayout.widget.CoordinatorLayout
-                    android:id="@+id/main"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingStart="@dimen/padding_start_constrain"
-                    android:paddingEnd="@dimen/padding_end_constrain">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/input_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:hint="@string/search_wiki"
-                        app:endIconCheckable="true"
-                        app:endIconDrawable="@drawable/ic_wikipedia"
-                        app:endIconMode="custom"
-                        app:helperText="@string/wiki_helper_text"
-                        app:layout_constraintBottom_toTopOf="@+id/image_view"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/input_edit_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.example.picturesoftheday.utils.CustomImageView
-                        android:id="@+id/image_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:contentDescription="@string/photo_of_the_day_stub"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_no_photo_vector" />
-
-                </androidx.coordinatorlayout.widget.CoordinatorLayout>
-            </androidx.core.widget.NestedScrollView>
-            <FrameLayout
-                android:id="@+id/frame_text_discription"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:alpha="0"
-                android:background="@color/grey"
-                app:behavior_peekHeight="@dimen/behavior_peekHeight"
-                app:layout_behavior=".utils.CustomBehavior">
-
-                <TextView
-                    android:id="@+id/text_discription_POD"
-                    style="@style/my_text_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textColor="@color/white" />
-            </FrameLayout>
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/GL_75_Horizontal"
+            android:id="@+id/text_discription_POD"
+            style="@style/my_text_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.75" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/GL_85_Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.85" />
-
-        <ImageView
-            android:id="@+id/prevImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/padding_image"
-            android:paddingEnd="@dimen/padding_image"
-            android:src="@drawable/ic_previous"
-            app:layout_constraintBottom_toTopOf="@+id/GL_85_Horizontal"
-            app:layout_constraintEnd_toStartOf="@+id/HD_picture"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/GL_85_Horizontal" />
-
-        <ImageView
-            android:id="@+id/HD_picture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/padding_image"
-            android:paddingEnd="@dimen/padding_image"
-            app:layout_constraintBottom_toTopOf="@+id/GL_85_Horizontal"
-            app:layout_constraintEnd_toStartOf="@+id/info_pod"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/prevImg"
-            app:layout_constraintTop_toBottomOf="@+id/GL_85_Horizontal" />
-
-        <ImageView
-            android:id="@+id/info_pod"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/padding_image"
-            android:paddingEnd="@dimen/padding_image"
-            android:src="@drawable/ic_info"
-            app:layout_constraintBottom_toTopOf="@+id/GL_85_Horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/HD_picture"
-            app:layout_constraintTop_toBottomOf="@+id/GL_85_Horizontal" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
+            android:textColor="@color/white" />
+    </FrameLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

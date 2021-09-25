@@ -56,34 +56,36 @@ class FragmentEarth : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         isHD = PrefConfing.loadBol(requireContext())
-        if (isHD) binding.HDPicture.setImageResource(R.drawable.ic_hd)
-        else binding.HDPicture.setImageResource(R.drawable.ic_no_hd)
+        if (isHD) binding.includeEarth.HDPicture.setImageResource(R.drawable.ic_hd)
+        else binding.includeEarth.HDPicture.setImageResource(R.drawable.ic_no_hd)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         viewModel.getPOD()
         val c = Calendar.getInstance()
+        val  customBehavior =  CustomBehavior()
+        (binding.frameTextDiscription.layoutParams as CoordinatorLayout.LayoutParams).behavior = customBehavior
 
-        binding.inputLayout.setEndIconOnClickListener {
+        binding.includeEarth.inputLayout.setEndIconOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW).apply {
                 data =
-                    Uri.parse("https://ru.m.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
+                    Uri.parse("https://ru.m.wikipedia.org/wiki/${binding.includeEarth.inputEditText.text.toString()}")
             }
             startActivity(intent)
         }
 
 
-        binding.prevImg.setOnClickListener {
+        binding.includeEarth.prevImg.setOnClickListener {
             c.add(Calendar.DATE, -1)
             var date =
                 "${c.get(Calendar.YEAR)}-0${c.get(Calendar.MONTH) + 1}-${c.get(Calendar.DAY_OF_MONTH)}"
             viewModel.getPOD(date, date)
         }
 
-        binding.HDPicture.setOnClickListener {
+        binding.includeEarth.HDPicture.setOnClickListener {
             if (isHD) {
-                binding.HDPicture.setImageResource(R.drawable.ic_hd)
+                binding.includeEarth.HDPicture.setImageResource(R.drawable.ic_hd)
                 viewModel.getPOD()
             } else {
-                binding.HDPicture.setImageResource(R.drawable.ic_no_hd)
+                binding.includeEarth.HDPicture.setImageResource(R.drawable.ic_no_hd)
                 viewModel.getPOD()
             }
             isHD = !isHD
@@ -99,24 +101,24 @@ class FragmentEarth : Fragment() {
                 Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
             }
             is AppState.Loading -> {
-                binding.imageView.load(R.drawable.progress_animation) {
+                binding.includeEarth.imageView.load(R.drawable.progress_animation) {
                     error(R.drawable.ic_load_error_vector)
                 }
             }
             is AppState.SuccessPODDate -> {
-                binding.imageView.load(data.serverResponseData[0].url) {
+                binding.includeEarth.imageView.load(data.serverResponseData[0].url) {
                     placeholder(R.drawable.progress_animation)
                     error(R.drawable.ic_load_error_vector)
                     when (PrefConfing.loadBol(requireContext())) {
                         true -> {
-                            binding.imageView.load(data.serverResponseData[0].hdurl) {
+                            binding.includeEarth.imageView.load(data.serverResponseData[0].hdurl) {
                                 placeholder(R.drawable.progress_animation)
                                 error(R.drawable.ic_load_error_vector)
                             }
                         }
 
                         false -> {
-                            binding.imageView.load(data.serverResponseData[0].url) {
+                            binding.includeEarth.imageView.load(data.serverResponseData[0].url) {
                                 placeholder(R.drawable.progress_animation)
                                 error(R.drawable.ic_load_error_vector)
                             }
@@ -128,19 +130,19 @@ class FragmentEarth : Fragment() {
                 }
             }
             is AppState.Success -> {
-                binding.imageView.load(data.serverResponseData.url) {
+                binding.includeEarth.imageView.load(data.serverResponseData.url) {
                     placeholder(R.drawable.progress_animation)
                     error(R.drawable.ic_load_error_vector)
                     when (PrefConfing.loadBol(requireContext())) {
                         true -> {
-                            binding.imageView.load(data.serverResponseData.hdurl) {
+                            binding.includeEarth.imageView.load(data.serverResponseData.hdurl) {
                                 placeholder(R.drawable.progress_animation)
                                 error(R.drawable.ic_load_error_vector)
                             }
                         }
 
                         false -> {
-                            binding.imageView.load(data.serverResponseData.url) {
+                            binding.includeEarth.imageView.load(data.serverResponseData.url) {
                                 placeholder(R.drawable.progress_animation)
                                 error(R.drawable.ic_load_error_vector)
                             }
