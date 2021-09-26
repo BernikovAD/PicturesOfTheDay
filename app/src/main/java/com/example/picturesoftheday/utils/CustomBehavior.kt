@@ -32,9 +32,12 @@ class CustomBehavior @JvmOverloads constructor(
     ): Boolean {
         val scroll = dependency as NestedScrollView
         val scrollY = scroll.scrollY
+
         val param = child.layoutParams as ViewGroup.MarginLayoutParams
+        parent.findViewById<CoordinatorLayout>(R.id.include_earth).alpha = 0.5f
         param.setMargins(40, 0, 40, scrollY)
         if (scrollY == 0) {
+            parent.findViewById<CoordinatorLayout>(R.id.include_earth).alpha = 1f
             param.setMargins(40, 0, 40, -300)
         }
         child.layoutParams = param

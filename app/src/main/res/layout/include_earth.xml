@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/padding_image"
             android:paddingEnd="@dimen/padding_image"
-            android:src="@drawable/ic_info"
+            android:src="@drawable/ic_next"
             app:layout_constraintBottom_toTopOf="@+id/GL_25_Horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -122,14 +122,14 @@
 
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/scroll"
+        android:id="@+id/scroll_POD"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_gravity="bottom"
         android:layout_marginBottom="150dp">
 
         <com.example.picturesoftheday.utils.CustomImageView
-            android:id="@+id/image_view"
+            android:id="@+id/image_view_POD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="@string/photo_of_the_day_stub"

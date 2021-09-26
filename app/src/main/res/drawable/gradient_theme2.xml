@@ -3,7 +3,7 @@
 
     <gradient
         android:startColor="@color/white"
-        android:endColor="@color/window_backgraund_theme_2"
+        android:endColor="@color/color_primary_variant_theme_2"
         android:type="radial"
         android:gradientRadius="500dp"/>
 

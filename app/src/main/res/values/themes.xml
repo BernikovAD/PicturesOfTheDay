@@ -87,7 +87,7 @@
         <item name="android:background">#663b4351</item>
     </style>
     <style name="my_text_view">
-        <item name="android:fontFamily">cursive</item>
+        <item name="android:fontFamily">@font/aldrich</item>
         <item name="android:textSize">@dimen/text_size</item>
     </style>
 

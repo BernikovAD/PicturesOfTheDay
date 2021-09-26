@@ -2,6 +2,8 @@ package com.example.picturesoftheday.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.fragment.app.Fragment
 import com.example.picturesoftheday.R
 import com.example.picturesoftheday.databinding.ActivityMainBinding
 import com.example.picturesoftheday.view.planets.FragmentEarth
@@ -9,6 +11,8 @@ import com.example.picturesoftheday.view.planets.FragmentMars
 import com.example.picturesoftheday.view.planets.FragmentSolar
 import com.example.picturesoftheday.view.settings.PrefConfing
 import com.example.picturesoftheday.view.settings.SettingsFragment
+import com.example.picturesoftheday.view.settings.ViewPagerAdapter
+import java.lang.Math.abs
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding

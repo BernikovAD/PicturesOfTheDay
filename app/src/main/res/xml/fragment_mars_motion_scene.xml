@@ -31,10 +31,10 @@
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toTopOf="@+id/GL_10_Horizontal"
-            motion:layout_constraintTop_toTopOf="@+id/GL_10_Horizontal"
             motion:layout_constraintStart_toStartOf="parent"
-            android:translationY="100dp"
+            motion:layout_constraintStart_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
             android:scaleX="5"
             android:scaleY="5" />
     </ConstraintSet>

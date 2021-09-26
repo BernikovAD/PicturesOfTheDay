@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#b085f5</color>
-    <color name="purple_500">#4d2c91</color>
-    <color name="purple_700">#7e57c2</color>
+    <color name="purple_200">#484848</color>
+    <color name="purple_500">#000000</color>
+    <color name="purple_700">#212121</color>
     <color name="purple_theme_1">#ede7f6</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FB0000</color>
-    <color name="colorAccent">#b085f5</color>
+    <color name="colorAccent">#484848</color>
     <color name="yelow">#FFEB3B</color>
     <color name="green">#4CAF50</color>
     <color name="grey">#8F8F8F</color>
     <color name="blue">#000CFA</color>
-    <color name="color_primary_variant_theme_2">#ffe97d</color>
-    <color name="color_primary_dark_theme_2">#c88719</color>
-    <color name="color_primary_theme_2">#ffb74d</color>
-    <color name="color_primary_variant_theme_3">#6abf69</color>
-    <color name="color_primary_dark_theme_3">#00600f</color>
-    <color name="color_primary_theme_3">#388e3c</color>
-    <color name="window_backgraund_theme_3">#fff9c4</color>
-    <color name="window_backgraund_theme_1">#fce4ec</color>
-    <color name="window_backgraund_theme_2">#b3e5fc</color>
+    <color name="color_primary_variant_theme_2">#ff7539</color>
+    <color name="color_primary_dark_theme_2">#c30000</color>
+    <color name="color_primary_theme_2">#ff3d00</color>
+    <color name="color_primary_variant_theme_3">#4f83cc</color>
+    <color name="color_primary_dark_theme_3">#002f6c</color>
+    <color name="color_primary_theme_3">#01579b</color>
 </resources>

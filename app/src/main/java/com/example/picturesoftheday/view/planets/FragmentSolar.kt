@@ -1,5 +1,7 @@
 package com.example.picturesoftheday.view.planets
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
@@ -54,6 +56,15 @@ class FragmentSolar : Fragment() {
         binding.buttonToday.setOnClickListener {
             viewModel.getSolarFlare(viewModel.getDate())
         }
+        val set = AnimatorSet()
+        set.playTogether(arrayOf(30f, -30f).map { translation ->
+            ObjectAnimator.ofFloat(binding.logoSolar, "translationY", translation).apply {
+                duration = 500
+                repeatCount = ObjectAnimator.INFINITE
+                repeatMode = ObjectAnimator.REVERSE
+            }
+        })
+        set.start()
     }
 
     private fun render(appState: AppState) {

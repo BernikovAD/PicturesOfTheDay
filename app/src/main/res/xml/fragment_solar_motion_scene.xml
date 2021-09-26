@@ -7,19 +7,19 @@
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
         motion:duration="1000">
-        <OnClick app:targetId="@+id/appCompatImageView"/>
-        <KeyFrameSet >
+        <OnClick app:targetId="@+id/logo_solar"/>
+        <KeyFrameSet>
             <KeyAttribute
-                motion:motionTarget="@+id/appCompatImageView"
+                motion:motionTarget="@+id/logo_solar"
                 motion:framePosition="150"
                 android:rotationY="50"
                 android:rotationX="50" />
             <KeyAttribute
-                motion:motionTarget="@+id/appCompatImageView"
+                motion:motionTarget="@+id/logo_solar"
                 motion:framePosition="40"
                 android:rotationX="5" />
             <KeyAttribute
-                motion:motionTarget="@+id/appCompatImageView"
+                motion:motionTarget="@+id/logo_solar"
                 motion:framePosition="30"
                 android:translationX="100dp" />
         </KeyFrameSet>
@@ -31,12 +31,12 @@
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toTopOf="@+id/scroll"
+            motion:layout_constraintBottom_toTopOf="@+id/scroll_POD"
             motion:layout_constraintTop_toBottomOf="@+id/logo_solar"
             motion:layout_constraintStart_toStartOf="parent"
             android:alpha="0" />
         <Constraint
-            android:id="@+id/scroll"
+            android:id="@+id/scroll_POD"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,10 +48,10 @@
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toTopOf="@+id/GL_10_Horizontal"
-            motion:layout_constraintTop_toTopOf="@+id/GL_10_Horizontal"
             motion:layout_constraintStart_toStartOf="parent"
-            android:translationY="100dp"
+            motion:layout_constraintStart_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
             android:scaleX="5"
             android:scaleY="5"  />
 
@@ -63,12 +63,12 @@
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toTopOf="@+id/scroll"
+            motion:layout_constraintBottom_toTopOf="@+id/scroll_POD"
             motion:layout_constraintTop_toBottomOf="@+id/logo_solar"
             motion:layout_constraintStart_toStartOf="parent"
             android:alpha="1" />
         <Constraint
-            android:id="@+id/scroll"
+            android:id="@+id/scroll_POD"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
