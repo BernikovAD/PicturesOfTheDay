@@ -64,23 +64,24 @@ class FragmentEarth : Fragment() {
         else binding.includeEarth.HDPicture.setImageResource(R.drawable.ic_no_hd)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         viewModel.getPOD()
-        //animationStart()
+        animationStart()
         clickIncreaseImagePOD()
         ckickWiki()
         clickPreviusImage()
         clickHDpicture()
+
+    }
+
+    private fun animationStart() {
         val set = AnimatorSet()
-        set.playTogether(arrayOf(30f, -30f).map { translation ->
+        set.playTogether(arrayOf(10f, -10f).map { translation ->
             ObjectAnimator.ofFloat(binding.includeEarth.logoEarth, "translationY", translation).apply {
-                duration = 500
+                duration = 1000
                 repeatCount = ObjectAnimator.INFINITE
                 repeatMode = ObjectAnimator.REVERSE
             }
         })
         set.start()
-    }
-
-    private fun animationStart() {
         val durationMs = 500L
         binding.includeEarth.apply {
             logoEarth.alpha = 0f

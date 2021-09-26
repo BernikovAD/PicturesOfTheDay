@@ -42,17 +42,36 @@ class FragmentMars : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLiveData().observe(viewLifecycleOwner, { render(it) })
         viewModel.getMarsPicture()
-            val set = AnimatorSet()
-            set.playTogether(arrayOf(30f, -30f).map { translation ->
-                ObjectAnimator.ofFloat(binding.appCompatImageView, "translationY", translation).apply {
-                    duration = 500
-                    repeatCount = ObjectAnimator.INFINITE
-                    repeatMode = ObjectAnimator.REVERSE
-                }
-            })
-            set.start()
-        }
+        animationLogo()
+    }
 
+    private fun animationLogo() {
+        val set = AnimatorSet()
+        val animationLogoOne = ObjectAnimator.ofFloat(binding.logoMarsTwo,"rotation", 0f,360f).apply {
+            duration = 5000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+        }
+        val animationLogoTwo = ObjectAnimator.ofFloat(binding.logoMarsThree,"rotation", 0f,360f).apply {
+            duration = 3000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+        }
+        val animationLogoThree = ObjectAnimator.ofFloat(binding.logoMarsFour,"rotation", 0f,360f).apply {
+            duration = 7000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+        }
+        set.playTogether(arrayOf(30f, -30f).map { translation ->
+            ObjectAnimator.ofFloat(binding.logoMarsOne, "translationY", translation).apply {
+                duration = 500
+                repeatCount = ObjectAnimator.INFINITE
+                repeatMode = ObjectAnimator.REVERSE
+            }
+        })
+        set.play(animationLogoOne).with(animationLogoTwo).with(animationLogoThree)
+        set.start()
+    }
 
 
     private fun render(appState: AppState) {

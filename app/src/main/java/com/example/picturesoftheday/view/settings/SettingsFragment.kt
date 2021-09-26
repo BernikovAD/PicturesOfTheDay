@@ -1,6 +1,8 @@
 package com.example.picturesoftheday.view.settings
 
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -46,6 +48,32 @@ class SettingsFragment : Fragment() {
             PrefConfing.save(requireContext(), 1)
             requireActivity().recreate()
         }
+        animation()
+    }
+
+    private fun animation() {
+        val set = AnimatorSet()
+        val animationLogoOne =
+            ObjectAnimator.ofFloat(binding.logoSettingsTwo, "rotation", 0f, 360f).apply {
+                duration = 3000
+                repeatCount = ObjectAnimator.INFINITE
+                repeatMode = ObjectAnimator.REVERSE
+            }
+        val animationLogoTwo =
+            ObjectAnimator.ofFloat(binding.logoSettingsOne, "rotation", 0f, 240f).apply {
+                duration = 5000
+                repeatCount = ObjectAnimator.INFINITE
+                repeatMode = ObjectAnimator.REVERSE
+            }
+        val animationLogoThree =
+            ObjectAnimator.ofFloat(binding.logoSettingsThree, "rotation", 0f, 100f).apply {
+                duration = 7000
+                repeatCount = ObjectAnimator.INFINITE
+                repeatMode = ObjectAnimator.REVERSE
+            }
+        set.play(animationLogoOne).with(animationLogoTwo).with(animationLogoThree)
+        set.start()
+
         val durationMs = 500L
         binding.apply {
             theme1.alpha = 0f

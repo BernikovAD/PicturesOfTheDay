@@ -16,7 +16,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/almendra_italic</item>
-        <item name="android:windowBackground">@drawable/gradient_theme1</item>
+        <item name="android:windowBackground">@drawable/gradient_theme_one</item>
         <item name="android:navigationBarColor">@color/purple_500</item>
         <item name="textInputStyle">@style/CustomOutlinedBox</item>
     </style>
@@ -29,7 +29,7 @@
     <item name="colorSurface">@color/color_primary_variant_theme_2</item>
     <item name="colorOnSurface">@color/color_primary_theme_2</item>
     <item name="colorSecondary">@color/color_primary_theme_2</item>
-    <item name="android:windowBackground">@drawable/gradient_theme2</item>
+    <item name="android:windowBackground">@drawable/gradient_theme_two</item>
     <item name="android:navigationBarColor">@color/color_primary_theme_2</item>
     <item name="fontFamily">@font/arbutus</item>
     <item name="textInputStyle">@style/CustomOutlinedBox</item>
@@ -42,7 +42,7 @@
         <item name="colorSurface">@color/color_primary_variant_theme_3</item>
         <item name="colorSecondary">@color/color_primary_theme_3</item>
         <item name="colorOnSurface">@color/color_primary_theme_3</item>
-        <item name="android:windowBackground">@drawable/gradient_theme3</item>
+        <item name="android:windowBackground">@drawable/gradient_theme_three</item>
         <item name="android:navigationBarColor">@color/color_primary_theme_3</item>
         <item name="fontFamily">@font/arbutus</item>
         <item name="textInputStyle">@style/CustomOutlinedBox</item>

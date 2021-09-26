@@ -1,0 +1,19 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+    bg_mars_two.xml
+    <path
+        android:fillColor="#FFCB5A"
+        android:pathData="M34.712,468.61h17.356v17.356H34.712V468.61z" />
+    <path
+        android:fillColor="#FFCB5A"
+        android:pathData="M0,468.61h17.356v17.356H0V468.61z" />
+    <path
+        android:fillColor="#FFCB5A"
+        android:pathData="M17.356,451.254h17.356v17.356H17.356V451.254z" />
+    <path
+        android:fillColor="#FFCB5A"
+        android:pathData="M17.356,485.966h17.356v17.356H17.356V485.966z" />
+   </vector>

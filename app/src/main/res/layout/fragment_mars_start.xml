@@ -16,14 +16,42 @@
         app:layout_constraintGuide_percent="0.1" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView"
+        android:id="@+id/logo_mars_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/GL_10_Horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/GL_10_Horizontal"
-        app:srcCompat="@drawable/bg_mars" />
+        app:srcCompat="@drawable/bg_mars_one" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logo_mars_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/GL_10_Horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/GL_10_Horizontal"
+        app:srcCompat="@drawable/bg_mars_two" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logo_mars_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/GL_10_Horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/GL_10_Horizontal"
+        app:srcCompat="@drawable/bg_mars_three" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logo_mars_four"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/GL_10_Horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/GL_10_Horizontal"
+        app:srcCompat="@drawable/bg_mars_four" />
 
     <TextView
         android:id="@+id/textView"
@@ -37,7 +65,7 @@
         app:layout_constraintBottom_toTopOf="@+id/img_mars"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/logo_mars_one" />
 
     <com.example.picturesoftheday.utils.CustomImageView
         android:id="@+id/img_mars"
