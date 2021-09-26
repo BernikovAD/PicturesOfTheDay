@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_gravity="top"
+        android:id="@+id/constraint_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/constraint_top"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_gravity="top"
+        app:layout_constraintBottom_toTopOf="@+id/coordinator"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/coordinator">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GL_10_Horizontal"
@@ -45,12 +44,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/logo_earth" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GL_25_Horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.5" />
+
         <ImageView
             android:id="@+id/prevImg"
             android:layout_width="wrap_content"
@@ -88,12 +89,14 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/HD_picture"
             app:layout_constraintTop_toBottomOf="@+id/GL_25_Horizontal" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GL_75_Horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.75" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_layout"
             android:layout_width="match_parent"
@@ -105,9 +108,9 @@
             app:endIconMode="custom"
             app:helperText="@string/wiki_helper_text"
             app:layout_constraintBottom_toBottomOf="@+id/GL_75_Horizontal"
-            app:layout_constraintTop_toTopOf="@+id/GL_75_Horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/GL_75_Horizontal">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_edit_text"
@@ -118,26 +121,25 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="150dp">
 
-
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/scroll"
-            android:layout_gravity="bottom"
-            android:alpha="1.0"
+        <com.example.picturesoftheday.utils.CustomImageView
+            android:id="@+id/image_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-                <com.example.picturesoftheday.utils.CustomImageView
-                    android:id="@+id/image_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="bottom"
-                    android:contentDescription="@string/photo_of_the_day_stub"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/input_layout"
-                    app:srcCompat="@drawable/ic_no_photo_vector" />
-        </androidx.core.widget.NestedScrollView>
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/photo_of_the_day_stub"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_layout"
+            app:srcCompat="@drawable/ic_no_photo_vector" />
+    </androidx.core.widget.NestedScrollView>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

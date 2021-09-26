@@ -3,42 +3,51 @@ package com.example.picturesoftheday.utils
 import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
-import android.view.MotionEvent
 import android.view.View
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.view.ViewGroup
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.math.MathUtils
+import androidx.core.view.marginBottom
 import androidx.core.widget.NestedScrollView
 import com.example.picturesoftheday.R
 import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.snackbar.Snackbar
-import kotlin.math.max
 
 class CustomBehavior @JvmOverloads constructor(
-    context: Context? = null, attrs: AttributeSet? = null) : CoordinatorLayout.Behavior<View>(context, attrs) {
+    context: Context? = null, attrs: AttributeSet? = null
+) : CoordinatorLayout.Behavior<View>(context, attrs) {
 
     override fun layoutDependsOn(
         parent: CoordinatorLayout,
         child: View,
         dependency: View
-    )= dependency is NestedScrollView
+    ) = dependency is NestedScrollView
 
-    override fun onInterceptTouchEvent(
+    override fun onStartNestedScroll(
         parent: CoordinatorLayout,
         child: View,
-        ev: MotionEvent
+        directTargetChild: View,
+        dependency: View,
+        axes: Int,
+        type: Int
     ): Boolean {
-        Log.i("MyTag", "parent ${parent.alpha}  \nchild ${child.alpha}")
-        if(child.alpha == 0f && parent.findViewById<NestedScrollView>(R.id.scroll).alpha == 1f){
-            child.alpha = 1f
-            parent.findViewById<NestedScrollView>(R.id.scroll).alpha = 0f
-        }else{
-            child.alpha = 0f
-            parent.findViewById<NestedScrollView>(R.id.scroll).alpha = 1f
+        val scroll = dependency as NestedScrollView
+        val scrollY = scroll.scrollY
+        val param = child.layoutParams as ViewGroup.MarginLayoutParams
+        param.setMargins(40, 0, 40, scrollY)
+        if (scrollY == 0) {
+            param.setMargins(40, 0, 40, -300)
         }
-        return super.onInterceptTouchEvent(parent, child, ev)
+        child.layoutParams = param
+        child.requestLayout()
+
+        return super.onStartNestedScroll(
+            parent,
+            child,
+            directTargetChild,
+            dependency,
+            axes,
+            type
+        )
     }
-
-
 }
 

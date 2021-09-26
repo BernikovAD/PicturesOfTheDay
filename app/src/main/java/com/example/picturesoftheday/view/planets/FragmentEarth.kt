@@ -96,16 +96,19 @@ class FragmentEarth : Fragment() {
     }
 
     private fun renderData(data: AppState) {
+
         when (data) {
             is AppState.Error -> {
                 Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
             }
             is AppState.Loading -> {
+
                 binding.includeEarth.imageView.load(R.drawable.progress_animation) {
                     error(R.drawable.ic_load_error_vector)
                 }
             }
             is AppState.SuccessPODDate -> {
+
                 binding.includeEarth.imageView.load(data.serverResponseData[0].url) {
                     placeholder(R.drawable.progress_animation)
                     error(R.drawable.ic_load_error_vector)

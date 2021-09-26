@@ -5,22 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<include layout="@layout/include_earth"
-    android:layout_gravity="center"
-    android:id="@+id/include_earth"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent" />
+    <include
+        android:id="@+id/include_earth"
+        layout="@layout/include_earth"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
 
     <FrameLayout
-        android:layout_gravity="bottom"
         android:id="@+id/frame_text_discription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="?attr/actionBarSize"
-        android:alpha="1.0"
-        app:layout_behavior=".utils.CustomBehavior"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="-100dp"
         android:background="@color/grey"
-        app:behavior_peekHeight="@dimen/behavior_peekHeight">
+        app:behavior_peekHeight="@dimen/behavior_peekHeight"
+        app:layout_behavior=".utils.CustomBehavior">
 
         <TextView
             android:id="@+id/text_discription_POD"
