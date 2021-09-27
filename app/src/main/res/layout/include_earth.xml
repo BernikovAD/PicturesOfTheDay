@@ -82,13 +82,13 @@
             android:paddingStart="@dimen/padding_image"
             android:paddingEnd="@dimen/padding_image"
             app:layout_constraintBottom_toTopOf="@+id/GL_25_Horizontal"
-            app:layout_constraintEnd_toStartOf="@+id/info_pod"
+            app:layout_constraintEnd_toStartOf="@+id/next_pod"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/prevImg"
             app:layout_constraintTop_toBottomOf="@+id/GL_25_Horizontal" />
 
         <ImageView
-            android:id="@+id/info_pod"
+            android:id="@+id/next_pod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/padding_image"

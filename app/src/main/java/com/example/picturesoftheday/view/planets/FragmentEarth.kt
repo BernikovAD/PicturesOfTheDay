@@ -2,16 +2,15 @@ package com.example.picturesoftheday.view.planets
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -20,7 +19,6 @@ import androidx.transition.*
 import coil.api.load
 import com.example.picturesoftheday.R
 import com.example.picturesoftheday.databinding.FragmentEarthBinding
-import com.example.picturesoftheday.utils.CustomBehavior
 import com.example.picturesoftheday.view.settings.PrefConfing
 import com.example.picturesoftheday.viewmodel.AppState
 import com.example.picturesoftheday.viewmodel.PODViewModel
@@ -35,6 +33,8 @@ class FragmentEarth : Fragment() {
     private val binding: FragmentEarthBinding
         get() = _binding!!
     private var isHD = false
+    private val date = Calendar.getInstance()
+    private val today = Calendar.getInstance()
     private val viewModel: PODViewModel by lazy {
         ViewModelProvider(this).get(PODViewModel::class.java)
     }
@@ -67,24 +67,27 @@ class FragmentEarth : Fragment() {
         animationStart()
         clickIncreaseImagePOD()
         ckickWiki()
-        clickPreviusImage()
+        clickPreviousImage()
         clickHDpicture()
-
+        clickNextImage()
     }
 
     private fun animationStart() {
         val set = AnimatorSet()
         set.playTogether(arrayOf(10f, -10f).map { translation ->
-            ObjectAnimator.ofFloat(binding.includeEarth.logoEarth, "translationY", translation).apply {
-                duration = 1000
-                repeatCount = ObjectAnimator.INFINITE
-                repeatMode = ObjectAnimator.REVERSE
-            }
+            ObjectAnimator.ofFloat(binding.includeEarth.logoEarth, "translationY", translation)
+                .apply {
+                    duration = 1000
+                    repeatCount = ObjectAnimator.INFINITE
+                    repeatMode = ObjectAnimator.REVERSE
+                }
         })
-        val animationMoon = ObjectAnimator.ofFloat(binding.includeEarth.logoEarthMoon,"rotation",0f,1080f).apply {
-            duration = 10000
-            repeatCount = ObjectAnimator.INFINITE
-        }
+        val animationMoon =
+            ObjectAnimator.ofFloat(binding.includeEarth.logoEarthMoon, "rotation", 0f, 1080f)
+                .apply {
+                    duration = 10000
+                    repeatCount = ObjectAnimator.INFINITE
+                }
         set.play(animationMoon)
         set.start()
         val durationMs = 500L
@@ -93,14 +96,14 @@ class FragmentEarth : Fragment() {
             discriptionEarth.alpha = 0f
             prevImg.alpha = 0f
             HDPicture.alpha = 0f
-            infoPod.alpha = 0f
+            nextPod.alpha = 0f
             inputLayout.alpha = 0f
         }
         fadeIn(binding.includeEarth.logoEarth, durationMs)
             .andThen(fadeIn(binding.includeEarth.discriptionEarth, durationMs))
             .andThen(fadeIn(binding.includeEarth.prevImg, durationMs))
             .andThen(fadeIn(binding.includeEarth.HDPicture, durationMs))
-            .andThen(fadeIn(binding.includeEarth.infoPod, durationMs))
+            .andThen(fadeIn(binding.includeEarth.nextPod, durationMs))
             .andThen(fadeIn(binding.includeEarth.inputLayout, durationMs))
             .subscribe()
     }
@@ -133,6 +136,7 @@ class FragmentEarth : Fragment() {
                 }
         }
     }
+
     private fun ckickWiki() {
         binding.includeEarth.inputLayout.setEndIconOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW).apply {
@@ -143,13 +147,23 @@ class FragmentEarth : Fragment() {
         }
     }
 
-    private fun clickPreviusImage() {
-        val c = Calendar.getInstance()
+    private fun clickPreviousImage() {
         binding.includeEarth.prevImg.setOnClickListener {
-            c.add(Calendar.DATE, -1)
+            date.add(Calendar.DATE, -1)
             var date =
-                "${c.get(Calendar.YEAR)}-0${c.get(Calendar.MONTH) + 1}-${c.get(Calendar.DAY_OF_MONTH)}"
+                "${date.get(Calendar.YEAR)}-0${date.get(Calendar.MONTH) + 1}-${date.get(Calendar.DAY_OF_MONTH)}"
             viewModel.getPOD(date, date)
+        }
+    }
+
+    private fun clickNextImage() {
+        binding.includeEarth.nextPod.setOnClickListener {
+            if (date != today) {
+                date.add(Calendar.DATE, 1)
+                var date =
+                    "${date.get(Calendar.YEAR)}-0${date.get(Calendar.MONTH) + 1}-${date.get(Calendar.DAY_OF_MONTH)}"
+                viewModel.getPOD(date, date)
+            }
         }
     }
 
