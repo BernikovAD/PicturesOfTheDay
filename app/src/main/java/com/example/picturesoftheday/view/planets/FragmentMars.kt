@@ -50,19 +50,16 @@ class FragmentMars : Fragment() {
         val animationLogoOne = ObjectAnimator.ofFloat(binding.logoMarsTwo,"rotation", 0f,360f).apply {
             duration = 5000
             repeatCount = ObjectAnimator.INFINITE
-            repeatMode = ObjectAnimator.REVERSE
         }
         val animationLogoTwo = ObjectAnimator.ofFloat(binding.logoMarsThree,"rotation", 0f,360f).apply {
             duration = 3000
             repeatCount = ObjectAnimator.INFINITE
-            repeatMode = ObjectAnimator.REVERSE
         }
         val animationLogoThree = ObjectAnimator.ofFloat(binding.logoMarsFour,"rotation", 0f,360f).apply {
             duration = 7000
             repeatCount = ObjectAnimator.INFINITE
-            repeatMode = ObjectAnimator.REVERSE
         }
-        set.playTogether(arrayOf(30f, -30f).map { translation ->
+        set.playTogether(arrayOf(10f, -10f).map { translation ->
             ObjectAnimator.ofFloat(binding.logoMarsOne, "translationY", translation).apply {
                 duration = 500
                 repeatCount = ObjectAnimator.INFINITE

@@ -81,6 +81,11 @@ class FragmentEarth : Fragment() {
                 repeatMode = ObjectAnimator.REVERSE
             }
         })
+        val animationMoon = ObjectAnimator.ofFloat(binding.includeEarth.logoEarthMoon,"rotation",0f,1080f).apply {
+            duration = 10000
+            repeatCount = ObjectAnimator.INFINITE
+        }
+        set.play(animationMoon)
         set.start()
         val durationMs = 500L
         binding.includeEarth.apply {

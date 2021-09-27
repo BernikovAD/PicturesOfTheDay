@@ -57,19 +57,16 @@ class SettingsFragment : Fragment() {
             ObjectAnimator.ofFloat(binding.logoSettingsTwo, "rotation", 0f, 360f).apply {
                 duration = 3000
                 repeatCount = ObjectAnimator.INFINITE
-                repeatMode = ObjectAnimator.REVERSE
             }
         val animationLogoTwo =
-            ObjectAnimator.ofFloat(binding.logoSettingsOne, "rotation", 0f, 240f).apply {
+            ObjectAnimator.ofFloat(binding.logoSettingsOne, "rotation", 0f, 360f).apply {
                 duration = 5000
                 repeatCount = ObjectAnimator.INFINITE
-                repeatMode = ObjectAnimator.REVERSE
             }
         val animationLogoThree =
-            ObjectAnimator.ofFloat(binding.logoSettingsThree, "rotation", 0f, 100f).apply {
+            ObjectAnimator.ofFloat(binding.logoSettingsThree, "rotation", 0f, 360f).apply {
                 duration = 7000
                 repeatCount = ObjectAnimator.INFINITE
-                repeatMode = ObjectAnimator.REVERSE
             }
         set.play(animationLogoOne).with(animationLogoTwo).with(animationLogoThree)
         set.start()

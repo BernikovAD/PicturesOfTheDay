@@ -19,6 +19,8 @@ class FragmentSolar : Fragment() {
     private var _binding: FragmentSolarStartBinding? = null
     private val binding: FragmentSolarStartBinding
         get() = _binding!!
+    private var startDate = ""
+    private var endDate = ""
     private val viewModel: PODViewModel by lazy {
         ViewModelProvider(this).get(PODViewModel::class.java)
     }
@@ -40,8 +42,7 @@ class FragmentSolar : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLiveData().observe(viewLifecycleOwner, { render(it) })
-        var startDate = ""
-        var endDate = ""
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             binding.datePickerStart.setOnDateChangedListener { _, i, i2, i3 ->
                 startDate = "$i-0${i2 + 1}-$i3"
@@ -56,6 +57,7 @@ class FragmentSolar : Fragment() {
         binding.buttonToday.setOnClickListener {
             viewModel.getSolarFlare(viewModel.getDate())
         }
+        binding.discription.text = "Solar flares from [$startDate] to [$endDate]"
         val set = AnimatorSet()
         set.playTogether(arrayOf(30f, -30f).map { translation ->
             ObjectAnimator.ofFloat(binding.logoSolar, "translationY", translation).apply {
@@ -75,14 +77,14 @@ class FragmentSolar : Fragment() {
             is AppState.Loading -> {
             }
             is AppState.SuccessWeather -> {
-                var info: String = ""
+                var informationFromSolar: String = ""
                 if (appState.solarFlareResponseData.size == 0) {
-                    info = "No solar flares have been detected today"
+                    binding.discription.text = "There were no flares in the sun on this date"
                 }
                 for (i in appState.solarFlareResponseData.indices) {
-                    info += "\n${appState.solarFlareResponseData[i].flrID}"
+                    informationFromSolar += "\n$i) ${appState.solarFlareResponseData[i].flrID}"
                 }
-                binding.contentText.text = info
+                binding.contentText.text = informationFromSolar
             }
         }
     }

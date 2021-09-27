@@ -33,6 +33,16 @@
             app:layout_constraintTop_toTopOf="@+id/GL_10_Horizontal"
             app:srcCompat="@drawable/bg_earth" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/logo_earth_moon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/GL_10_Horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/GL_10_Horizontal"
+            app:srcCompat="@drawable/bg_earth_moon" />
+
         <TextView
             android:id="@+id/discription_earth"
             android:layout_width="match_parent"
