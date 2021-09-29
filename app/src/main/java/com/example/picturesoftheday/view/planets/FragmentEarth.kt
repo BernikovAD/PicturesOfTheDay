@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,6 +43,7 @@ class FragmentEarth : Fragment() {
     val data: MutableList<DataPOD> = ArrayList()
     private val date = Calendar.getInstance()
     private val today = Calendar.getInstance()
+    private val videoOfTheDay ="Сегодня у нас без картинки дня, но есть видео дня! Кликни >ЗДЕСЬ< чтобы открыть в новом окне"
     private val viewModel: PODViewModel by lazy {
         ViewModelProvider(this).get(PODViewModel::class.java)
     }
@@ -192,6 +194,7 @@ class FragmentEarth : Fragment() {
         }
     }
 
+
     private fun renderData(data: AppState) {
 
         when (data) {
@@ -209,53 +212,60 @@ class FragmentEarth : Fragment() {
                     data.serverResponseData[0].date,
                     data.serverResponseData[0].url
                 )
-                binding.includeEarth.imageViewPOD.load(data.serverResponseData[0].url) {
-                    placeholder(R.drawable.progress_animation)
-                    error(R.drawable.ic_load_error_vector)
-                    when (PrefConfing.loadBol(requireContext())) {
-                        true -> {
-                            binding.includeEarth.imageViewPOD.load(data.serverResponseData[0].hdurl) {
-                                placeholder(R.drawable.progress_animation)
-                                error(R.drawable.ic_load_error_vector)
-                            }
-                        }
-                        false -> {
-                            binding.includeEarth.imageViewPOD.load(data.serverResponseData[0].url) {
-                                placeholder(R.drawable.progress_animation)
-                                error(R.drawable.ic_load_error_vector)
-                            }
-                        }
-                    }
+                if (data.serverResponseData[0].mediaType == "video") showAVideoUrl(data.serverResponseData[0].url)
+                else {
+                    showPhotoUrl(data.serverResponseData[0].url, data.serverResponseData[0].hdurl)
                     var text =
                         "${data.serverResponseData[0].date}\n${data.serverResponseData[0].title}"
                     binding.textDiscriptionPOD.text = text
                 }
             }
             is AppState.Success -> {
-                dataPOD =
-                    DataPOD(idPOD++, data.serverResponseData.date, data.serverResponseData.url)
-                binding.includeEarth.imageViewPOD.load(data.serverResponseData.url) {
-                    placeholder(R.drawable.progress_animation)
-                    error(R.drawable.ic_load_error_vector)
-                    when (PrefConfing.loadBol(requireContext())) {
-                        true -> {
-                            binding.includeEarth.imageViewPOD.load(data.serverResponseData.hdurl) {
-                                placeholder(R.drawable.progress_animation)
-                                error(R.drawable.ic_load_error_vector)
-                            }
-                        }
-
-                        false -> {
-                            binding.includeEarth.imageViewPOD.load(data.serverResponseData.url) {
-                                placeholder(R.drawable.progress_animation)
-                                error(R.drawable.ic_load_error_vector)
-                            }
-                        }
-                    }
+                dataPOD = DataPOD(idPOD++, data.serverResponseData.date, data.serverResponseData.url)
+                if (data.serverResponseData.mediaType == "video") showAVideoUrl(data.serverResponseData.url)
+                else {
+                    showPhotoUrl(data.serverResponseData.url, data.serverResponseData.hdurl)
                     var text = "${data.serverResponseData.date}\n${data.serverResponseData.title}"
                     binding.textDiscriptionPOD.text = text
                 }
+
             }
+        }
+    }
+
+    private fun showAVideoUrl(videoUrl: String?) = with(binding) {
+        binding.includeEarth.imageViewPOD.visibility = View.GONE
+        binding.includeEarth.videoOfTheDay.visibility = View.VISIBLE
+        binding.includeEarth.videoOfTheDay.text = videoOfTheDay
+        binding.includeEarth.videoOfTheDay.setOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse(videoUrl)
+            }
+            startActivity(i)
+        }
+    }
+
+    private fun showPhotoUrl(photoUrl: String?, photoHdurl: String?) {
+        binding.includeEarth.imageViewPOD.visibility = View.VISIBLE
+        binding.includeEarth.videoOfTheDay.visibility = View.GONE
+        binding.includeEarth.imageViewPOD.load(photoUrl) {
+            placeholder(R.drawable.progress_animation)
+            error(R.drawable.ic_load_error_vector)
+            when (PrefConfing.loadBol(requireContext())) {
+                true -> {
+                    binding.includeEarth.imageViewPOD.load(photoHdurl) {
+                        placeholder(R.drawable.progress_animation)
+                        error(R.drawable.ic_load_error_vector)
+                    }
+                }
+                false -> {
+                    binding.includeEarth.imageViewPOD.load(photoUrl) {
+                        placeholder(R.drawable.progress_animation)
+                        error(R.drawable.ic_load_error_vector)
+                    }
+                }
+            }
+
         }
     }
 }
