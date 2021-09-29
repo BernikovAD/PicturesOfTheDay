@@ -151,5 +151,11 @@
             app:srcCompat="@drawable/ic_no_photo_vector" />
     </androidx.core.widget.NestedScrollView>
 
-
+<androidx.appcompat.widget.AppCompatImageView
+    android:id="@+id/add_favorite_image"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:layout_gravity="bottom|end"
+    app:srcCompat="@drawable/ic_star"
+    android:layout_marginBottom="?actionBarSize"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -5,20 +5,43 @@
       <map>
         <entry key="..\:/Users/berni/.gradle/caches/transforms-3/05b759ac6def3b95ee73148b51e20a6f/transformed/material-1.4.0/res/drawable/ic_mtrl_chip_checked_black.xml" value="0.20677083333333332" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/bg_earth.xml" value="0.3828125" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/bg_earth_moon.xml" value="0.3828125" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/bg_mars.xml" value="0.2546875" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/bg_mars_four.xml" value="0.2546875" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/bg_mars_three.xml" value="0.2546875" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/bg_mars_two.xml" value="0.2546875" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/bg_solar_system.xml" value="0.28703703703703703" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/gradient.xml" value="0.19479166666666667" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/gradient_theme1.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/gradient_theme2.xml" value="0.19479166666666667" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/gradient_theme3.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_archive.xml" value="0.3212962962962963" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_back_fab.xml" value="0.3212962962962963" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_earth.xml" value="0.28703703703703703" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_favourite_menu.xml" value="0.3212962962962963" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_hamburger_menu_bottom_bar.xml" value="0.3212962962962963" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_hd.xml" value="0.3828125" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_home.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_ishd.xml" value="0.20677083333333332" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.3212962962962963" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_like.xml" value="0.21770833333333334" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_load_error_vector.xml" value="0.3212962962962963" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_mars.xml" value="0.2546875" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_no_hd.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_no_photo_vector.xml" value="0.3212962962962963" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_plus_fab.xml" value="0.3212962962962963" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_previous.xml" value="0.19479166666666667" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_search.xml" value="0.19479166666666667" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_send.xml" value="0.19479166666666667" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_settings.xml" value="0.3828125" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_settings2.xml" value="0.3828125" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_settings3.xml" value="0.3828125" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_settings_menu.xml" value="0.3212962962962963" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_settings_one.xml" value="0.3828125" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_solar_system.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_theme_1.xml" value="0.3769230769230769" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_theme_2.xml" value="0.3769230769230769" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/drawable/ic_theme_3.xml" value="0.3769230769230769" />
@@ -37,19 +60,23 @@
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_earth.xml" value="0.22" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_earth_end.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_earth_start.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_favorite_pictures.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_main.xml" value="0.48148148148148145" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_mars.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_mars_end.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_mars_start.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_planets.xml" value="0.18697916666666667" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_progress.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_settings.xml" value="0.2015625" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_settings.xml" value="0.5" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_solar.xml" value="0.190625" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_solar_end.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_solar_start.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_start.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_start_end.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/fragment_system.xml" value="0.25" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/include_chips.xml" value="0.25906735751295334" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/include_earth.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/items.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/layout/motion_scene.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/menu-v26/menu_bottom_navigation.xml" value="0.2015625" />
         <entry key="..\:/Users/berni/AndroidStudioProjects/PicturesOfTheDay/app/src/main/res/menu-v26/menu_set_theme.xml" value="0.190625" />

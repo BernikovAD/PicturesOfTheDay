@@ -2,6 +2,7 @@ package com.example.picturesoftheday.view.settings
 
 import android.content.Context
 import android.content.SharedPreferences
+import java.io.File
 
 
 object PrefConfing {

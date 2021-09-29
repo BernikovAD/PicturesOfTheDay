@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,16 +14,21 @@ import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.transition.*
+import androidx.transition.ChangeBounds
+import androidx.transition.ChangeImageTransform
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 import coil.api.load
 import com.example.picturesoftheday.R
 import com.example.picturesoftheday.databinding.FragmentEarthBinding
+import com.example.picturesoftheday.repository.DataPOD
 import com.example.picturesoftheday.view.settings.PrefConfing
 import com.example.picturesoftheday.viewmodel.AppState
 import com.example.picturesoftheday.viewmodel.PODViewModel
 import io.reactivex.Completable
 import io.reactivex.subjects.CompletableSubject
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class FragmentEarth : Fragment() {
@@ -33,6 +37,9 @@ class FragmentEarth : Fragment() {
     private val binding: FragmentEarthBinding
         get() = _binding!!
     private var isHD = false
+    private var idPOD: Int = 0
+    private lateinit var dataPOD: DataPOD
+    val data: MutableList<DataPOD> = ArrayList()
     private val date = Calendar.getInstance()
     private val today = Calendar.getInstance()
     private val viewModel: PODViewModel by lazy {
@@ -70,6 +77,10 @@ class FragmentEarth : Fragment() {
         clickPreviousImage()
         clickHDpicture()
         clickNextImage()
+        binding.includeEarth.addFavoriteImage.setOnClickListener {
+            viewModel.saveDataPODToDB(dataPOD)
+        }
+
     }
 
     private fun animationStart() {
@@ -188,13 +199,16 @@ class FragmentEarth : Fragment() {
                 Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
             }
             is AppState.Loading -> {
-
                 binding.includeEarth.imageViewPOD.load(R.drawable.progress_animation) {
                     error(R.drawable.ic_load_error_vector)
                 }
             }
             is AppState.SuccessPODDate -> {
-
+                dataPOD = DataPOD(
+                    idPOD++,
+                    data.serverResponseData[0].date,
+                    data.serverResponseData[0].url
+                )
                 binding.includeEarth.imageViewPOD.load(data.serverResponseData[0].url) {
                     placeholder(R.drawable.progress_animation)
                     error(R.drawable.ic_load_error_vector)
@@ -218,6 +232,8 @@ class FragmentEarth : Fragment() {
                 }
             }
             is AppState.Success -> {
+                dataPOD =
+                    DataPOD(idPOD++, data.serverResponseData.date, data.serverResponseData.url)
                 binding.includeEarth.imageViewPOD.load(data.serverResponseData.url) {
                     placeholder(R.drawable.progress_animation)
                     error(R.drawable.ic_load_error_vector)

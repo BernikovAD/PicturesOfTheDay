@@ -6,6 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.picturesoftheday.BuildConfig
+import com.example.picturesoftheday.app.App
+import com.example.picturesoftheday.repository.DataPOD
+import com.example.picturesoftheday.repository.LocalRepositoryImpl
 import com.example.picturesoftheday.repository.PODRetrofitImpl
 import com.example.picturesoftheday.repository.dto.MarsPhotosServerResponseData
 import com.example.picturesoftheday.repository.dto.PODServerResponseData
@@ -20,13 +23,16 @@ import java.util.*
 
 class PODViewModel(
     private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData(),
-    private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl()
+    private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl(),
+    private val picturesRepository: LocalRepositoryImpl = LocalRepositoryImpl(App.getPicturesDao())
 ) : ViewModel() {
     private val apiKey = BuildConfig.NASA_API_KEY
     fun getLiveData(): LiveData<AppState> {
         return liveDataToObserve
     }
-
+    fun saveDataPODToDB(dataPOD: DataPOD){
+        picturesRepository.saveEntity(dataPOD)
+    }
     fun getPOD() {
         liveDataToObserve.postValue(AppState.Loading)
         if (apiKey.isNotBlank()) {
