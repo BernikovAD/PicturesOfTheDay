@@ -1,13 +1,14 @@
-package com.example.picturesoftheday.view
+package com.example.picturesoftheday.view.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.picturesoftheday.R
 import com.example.picturesoftheday.databinding.ActivityMainBinding
-import com.example.picturesoftheday.view.favoritePOD.FragmentFavoritePictures
 import com.example.picturesoftheday.view.planets.FragmentEarth
 import com.example.picturesoftheday.view.planets.FragmentMars
-import com.example.picturesoftheday.view.settings.PrefConfing
+import com.example.picturesoftheday.settings.PrefConfing
+import com.example.picturesoftheday.view.favoritePOD.FragmentFavoritePictures
+import com.example.picturesoftheday.view.planets.FragmentSolar
 import com.example.picturesoftheday.view.settings.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +23,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         if(savedInstanceState==null){
-            supportFragmentManager.beginTransaction().replace(R.id.container, FragmentMain.newInstance()).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.container,
+                FragmentMain.newInstance()
+            ).commit()
         }
         binding.bottomAppBar.setOnItemSelectedListener {
             when (it.itemId) {
@@ -35,6 +38,10 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.app_bar_solar -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.container, FragmentSolar.newInstance()).addToBackStack(null).commit()
+                    true
+                }
+                R.id.app_bar_like_pictures -> {
                     supportFragmentManager.beginTransaction().replace(R.id.container, FragmentFavoritePictures.newInstance()).addToBackStack(null).commit()
                     true
                 }

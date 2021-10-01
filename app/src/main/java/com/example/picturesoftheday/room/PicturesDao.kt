@@ -1,21 +1,21 @@
 package com.example.picturesoftheday.room
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.picturesoftheday.model.EntityPictures
 
 @Dao
 interface PicturesDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(entityPOD: EntityPOD)
+    fun addPOD(entityPOD: EntityPictures)
 
-    @Query("SELECT * FROM EntityPOD")
-    fun selectAll(): List<EntityPOD>
+    @Query("SELECT * FROM POD_table ORDER BY id ASC")
+    fun readAllData(): LiveData<List<EntityPictures>>
 
-    @Query("SELECT * FROM EntityPOD WHERE date = :date")
-    fun selectByDate(date: String): List<EntityPOD>
-
-    @Query("DELETE FROM EntityPOD WHERE  date = :date")
-    fun deleteByDate(date: String)
     @Delete
-    fun delete(entityPOD: EntityPOD)
+     fun deletePicture(entityPOD: EntityPictures)
+
+    @Query("DELETE FROM POD_table")
+     fun deleteAllPictures()
 }

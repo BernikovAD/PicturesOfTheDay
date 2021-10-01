@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import com.example.picturesoftheday.databinding.FragmentSettingsBinding
+import com.example.picturesoftheday.settings.PrefConfing
 import io.reactivex.Completable
 import io.reactivex.subjects.CompletableSubject
 

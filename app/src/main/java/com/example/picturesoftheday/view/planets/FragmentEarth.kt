@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,14 +21,14 @@ import androidx.transition.TransitionSet
 import coil.api.load
 import com.example.picturesoftheday.R
 import com.example.picturesoftheday.databinding.FragmentEarthBinding
-import com.example.picturesoftheday.repository.DataPOD
-import com.example.picturesoftheday.view.settings.PrefConfing
+import com.example.picturesoftheday.model.EntityPictures
+import com.example.picturesoftheday.settings.PrefConfing
 import com.example.picturesoftheday.viewmodel.AppState
 import com.example.picturesoftheday.viewmodel.PODViewModel
+import com.example.picturesoftheday.viewmodel.PicturesViewModel
 import io.reactivex.Completable
 import io.reactivex.subjects.CompletableSubject
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class FragmentEarth : Fragment() {
@@ -38,14 +37,17 @@ class FragmentEarth : Fragment() {
     private val binding: FragmentEarthBinding
         get() = _binding!!
     private var isHD = false
-    private var idPOD: Int = 0
-    private lateinit var dataPOD: DataPOD
-    val data: MutableList<DataPOD> = ArrayList()
+    private var urlPictures: String = ""
+    private var datePictures: String = ""
     private val date = Calendar.getInstance()
     private val today = Calendar.getInstance()
-    private val videoOfTheDay ="Сегодня у нас без картинки дня, но есть видео дня! Кликни >ЗДЕСЬ< чтобы открыть в новом окне"
+    private val videoOfTheDay =
+        "Сегодня у нас без картинки дня, но есть видео дня! Кликни >ЗДЕСЬ< чтобы открыть в новом окне"
     private val viewModel: PODViewModel by lazy {
         ViewModelProvider(this).get(PODViewModel::class.java)
+    }
+    private val picturesViewModel: PicturesViewModel by lazy {
+        ViewModelProvider(this).get(PicturesViewModel::class.java)
     }
 
     companion object {
@@ -69,20 +71,40 @@ class FragmentEarth : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         isHD = PrefConfing.loadBol(requireContext())
-        if (isHD) binding.includeEarth.HDPicture.setImageResource(R.drawable.ic_hd)
-        else binding.includeEarth.HDPicture.setImageResource(R.drawable.ic_no_hd)
+        if (!isHD) binding.includeEarth.HDPicture.setImageResource(R.drawable.ic_no_hd)
+        else binding.includeEarth.HDPicture.setImageResource(R.drawable.ic_hd)
+
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         viewModel.getPOD()
         animationStart()
         clickIncreaseImagePOD()
-        ckickWiki()
+        clickWiki()
         clickPreviousImage()
         clickHDpicture()
         clickNextImage()
         binding.includeEarth.addFavoriteImage.setOnClickListener {
-            viewModel.saveDataPODToDB(dataPOD)
+
+            if(checkDuplicates(datePictures)) insertDataToDatabase(datePictures, urlPictures)
         }
 
+    }
+    private var picturesList = emptyList<EntityPictures>()
+    private fun checkDuplicates(datePictures: String):Boolean {
+        picturesViewModel.readAllData.observe(viewLifecycleOwner, Observer { list ->
+            setData(list)
+        })
+        picturesList.forEach{
+            if(it.date.equals(datePictures)) return false
+        }
+        return true
+    }
+    private fun setData(entityPictures: List<EntityPictures>) {
+        this.picturesList = entityPictures
+    }
+    private fun insertDataToDatabase(datePictures: String, urlPictures: String) {
+        val entityPictures = EntityPictures(0, datePictures, urlPictures)
+        picturesViewModel.addPictures(entityPictures)
+        Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_SHORT).show()
     }
 
     private fun animationStart() {
@@ -150,7 +172,7 @@ class FragmentEarth : Fragment() {
         }
     }
 
-    private fun ckickWiki() {
+    private fun clickWiki() {
         binding.includeEarth.inputLayout.setEndIconOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW).apply {
                 data =
@@ -207,11 +229,11 @@ class FragmentEarth : Fragment() {
                 }
             }
             is AppState.SuccessPODDate -> {
-                dataPOD = DataPOD(
-                    idPOD++,
-                    data.serverResponseData[0].date,
-                    data.serverResponseData[0].url
-                )
+                if (isEmptyData(data.serverResponseData[0].date, data.serverResponseData[0].url)) {
+                    datePictures = data.serverResponseData[0].date!!
+                    urlPictures = data.serverResponseData[0].url!!
+                }
+
                 if (data.serverResponseData[0].mediaType == "video") showAVideoUrl(data.serverResponseData[0].url)
                 else {
                     showPhotoUrl(data.serverResponseData[0].url, data.serverResponseData[0].hdurl)
@@ -221,7 +243,10 @@ class FragmentEarth : Fragment() {
                 }
             }
             is AppState.Success -> {
-                dataPOD = DataPOD(idPOD++, data.serverResponseData.date, data.serverResponseData.url)
+                if (isEmptyData(data.serverResponseData.date, data.serverResponseData.url)) {
+                    datePictures = data.serverResponseData.date!!
+                    urlPictures = data.serverResponseData.url!!
+                }
                 if (data.serverResponseData.mediaType == "video") showAVideoUrl(data.serverResponseData.url)
                 else {
                     showPhotoUrl(data.serverResponseData.url, data.serverResponseData.hdurl)
@@ -233,6 +258,9 @@ class FragmentEarth : Fragment() {
         }
     }
 
+    private fun isEmptyData(date: String?, url: String?): Boolean {
+        return (date != null) && (url != null)
+    }
     private fun showAVideoUrl(videoUrl: String?) = with(binding) {
         binding.includeEarth.imageViewPOD.visibility = View.GONE
         binding.includeEarth.videoOfTheDay.visibility = View.VISIBLE
@@ -265,7 +293,6 @@ class FragmentEarth : Fragment() {
                     }
                 }
             }
-
         }
     }
 }

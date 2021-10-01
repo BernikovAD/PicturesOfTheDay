@@ -6,9 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.picturesoftheday.BuildConfig
-import com.example.picturesoftheday.app.App
-import com.example.picturesoftheday.repository.DataPOD
-import com.example.picturesoftheday.repository.LocalRepositoryImpl
+
 import com.example.picturesoftheday.repository.PODRetrofitImpl
 import com.example.picturesoftheday.repository.dto.MarsPhotosServerResponseData
 import com.example.picturesoftheday.repository.dto.PODServerResponseData
@@ -23,45 +21,47 @@ import java.util.*
 
 class PODViewModel(
     private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData(),
-    private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl(),
-    private val picturesRepository: LocalRepositoryImpl = LocalRepositoryImpl(App.getPicturesDao())
+    private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl()
 ) : ViewModel() {
     private val apiKey = BuildConfig.NASA_API_KEY
     fun getLiveData(): LiveData<AppState> {
         return liveDataToObserve
     }
-    fun saveDataPODToDB(dataPOD: DataPOD){
-        picturesRepository.saveEntity(dataPOD)
-    }
+
     fun getPOD() {
         liveDataToObserve.postValue(AppState.Loading)
         if (apiKey.isNotBlank()) {
             retrofitImpl.getPictureOfTheDay(apiKey, PODCallback)
         }
     }
-    fun getPOD(startDate: String, endDate:String) {
+
+    fun getPOD(startDate: String, endDate: String) {
         liveDataToObserve.postValue(AppState.Loading)
         if (apiKey.isNotBlank()) {
-            retrofitImpl.getPictureOfTheDayDate(startDate,endDate, apiKey,PODCallbacklist)
+            retrofitImpl.getPictureOfTheDayDate(startDate, endDate, apiKey, PODCallbacklist)
         }
     }
-    fun getSolarFlare(startDate:String,endDate:String){
+
+    fun getSolarFlare(startDate: String, endDate: String) {
         liveDataToObserve.postValue(AppState.Loading)
-        if(apiKey.isNotBlank()){
-            retrofitImpl.getSolarFlare(startDate,endDate,apiKey,solarFlareCallback)
+        if (apiKey.isNotBlank()) {
+            retrofitImpl.getSolarFlare(startDate, endDate, apiKey, solarFlareCallback)
         }
     }
-    fun getSolarFlare(today:String){
+
+    fun getSolarFlare(today: String) {
         liveDataToObserve.postValue(AppState.Loading)
-        if(apiKey.isNotBlank()){
-            retrofitImpl.getSolarFlareToday(today,apiKey,solarFlareCallback)
+        if (apiKey.isNotBlank()) {
+            retrofitImpl.getSolarFlareToday(today, apiKey, solarFlareCallback)
         }
     }
+
     fun getMarsPicture() {
         liveDataToObserve.postValue(AppState.Loading)
         val earthDate = getDayBeforeYesterday()
-        retrofitImpl.getMarsPictureByDate(earthDate,BuildConfig.NASA_API_KEY, marsCallback)
+        retrofitImpl.getMarsPictureByDate(earthDate, BuildConfig.NASA_API_KEY, marsCallback)
     }
+
     private val PODCallback = object : Callback<PODServerResponseData> {
         override fun onResponse(
             call: Call<PODServerResponseData>,
@@ -71,6 +71,7 @@ class PODViewModel(
                 liveDataToObserve.postValue(AppState.Success(response.body()!!))
             }
         }
+
         override fun onFailure(call: Call<PODServerResponseData>, t: Throwable) {
             liveDataToObserve.postValue(AppState.Error(t))
         }
@@ -84,6 +85,7 @@ class PODViewModel(
                 liveDataToObserve.postValue(AppState.SuccessPODDate(response.body()!!))
             }
         }
+
         override fun onFailure(call: Call<List<PODServerResponseData>>, t: Throwable) {
             liveDataToObserve.postValue(AppState.Error(t))
         }
@@ -102,7 +104,8 @@ class PODViewModel(
             liveDataToObserve.postValue(AppState.Error(t))
         }
     }
-     private fun getDayBeforeYesterday(): String {
+
+    private fun getDayBeforeYesterday(): String {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val yesterday = LocalDateTime.now().minusDays(2)
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
@@ -137,6 +140,7 @@ class PODViewModel(
             liveDataToObserve.postValue(AppState.Error(t))
         }
     }
+
     @SuppressLint("SimpleDateFormat")
     fun getDate(): String {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

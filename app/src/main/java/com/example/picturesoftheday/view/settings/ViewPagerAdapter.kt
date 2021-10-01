@@ -2,7 +2,7 @@ package com.example.picturesoftheday.view.settings
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.picturesoftheday.view.FragmentMain
+import com.example.picturesoftheday.view.main.FragmentMain
 import com.example.picturesoftheday.view.planets.FragmentEarth
 import com.example.picturesoftheday.view.planets.FragmentMars
 import com.example.picturesoftheday.view.planets.FragmentSolar

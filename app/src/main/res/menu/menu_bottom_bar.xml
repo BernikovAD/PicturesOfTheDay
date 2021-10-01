@@ -7,19 +7,19 @@
     <item
         android:id="@+id/app_bar_earth"
         android:icon="@drawable/ic_earth"
-        android:title="@string/earth"
-        app:showAsAction="ifRoom"/>
+        android:title="@string/earth" />
     <item
         android:id="@+id/app_bar_mars"
         android:icon="@drawable/ic_mars"
-        android:title="@string/mars"
-        app:showAsAction="ifRoom" />
+        android:title="@string/mars" />
     <item
         android:id="@+id/app_bar_solar"
         android:icon="@drawable/ic_solar_system"
-        android:title="@string/solar"
-        app:showAsAction="ifRoom" />
-
+        android:title="@string/solar" />
+    <item
+        android:id="@+id/app_bar_like_pictures"
+        android:icon="@drawable/ic_photo"
+        android:title="@string/favorite_pictures" />
     <item
         android:id="@+id/app_bar_settings"
         android:icon="@drawable/ic_settings_menu"

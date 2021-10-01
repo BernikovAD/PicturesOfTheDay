@@ -1,4 +1,4 @@
-package com.example.picturesoftheday.view
+package com.example.picturesoftheday.view.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
