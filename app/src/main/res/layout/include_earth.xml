@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/picture_of_the_day_from_earth"
-            android:textSize="30sp"
+            android:textSize="@dimen/text_size_discription_earth"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -134,9 +134,9 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_POD"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="@dimen/height_scroll_POD"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="150dp">
+        android:layout_marginBottom="@dimen/margin_borron_scroll">
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -156,7 +156,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_size_video"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -167,9 +167,9 @@
 
 <androidx.appcompat.widget.AppCompatImageView
     android:id="@+id/add_favorite_image"
-    android:layout_width="50dp"
-    android:layout_height="50dp"
+    android:layout_width="@dimen/width_like"
+    android:layout_height="@dimen/height_like"
     android:layout_gravity="bottom|end"
-    app:srcCompat="@drawable/ic_star"
+    app:srcCompat="@drawable/ic_like"
     android:layout_marginBottom="?actionBarSize"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -11,4 +11,19 @@
     <dimen name="padding_end_constrain">10dp</dimen>
     <dimen name="text_size">20sp</dimen>
     <dimen name="padding_image">30dp</dimen>
+    <dimen name="padding_custom_image_list">10dp</dimen>
+    <dimen name="text_size_list">30sp</dimen>
+    <dimen name="margin_image_remove">10dp</dimen>
+    <dimen name="margi_image_burger">15dp</dimen>
+    <dimen name="view_line">1dp</dimen>
+    <dimen name="margin_view_line">10dp</dimen>
+    <dimen name="text_size_mars">30sp</dimen>
+    <dimen name="padding_settings_text">30dp</dimen>
+    <dimen name="size_settings_text">30sp</dimen>
+    <dimen name="text_size_discription_earth">30sp</dimen>
+    <dimen name="height_scroll_POD">300dp</dimen>
+    <dimen name="margin_borron_scroll">150dp</dimen>
+    <dimen name="text_size_video">20sp</dimen>
+    <dimen name="width_like">50dp</dimen>
+    <dimen name="height_like">50dp</dimen>
 </resources>

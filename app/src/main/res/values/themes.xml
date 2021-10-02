@@ -58,9 +58,11 @@
         <item name="endIconMode">custom</item>
         <item name="endIconDrawable">@drawable/ic_wikipedia</item>
     </style>
+
     <style name="MyStyleButton" parent="@style/Widget.MaterialComponents.Button">
         <item name="cornerRadius">100dp</item>
     </style>
+
     <style name="MyStyleButtonOutlinedButton" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
         <item name="cornerRadius">100dp</item>
     </style>
@@ -80,16 +82,23 @@
         <item name="android:layout_marginTop">@dimen/margin_top_row_content</item>
         <item name="android:layout_marginEnd">@dimen/margin_end_row_content</item>
     </style>
+
     <style name="view_line">
         <item name="android:layout_width">@dimen/width_view_line</item>
         <item name="android:layout_height">@dimen/height_view_line</item>
         <item name="android:layout_marginTop">@dimen/margin_top_view_line</item>
         <item name="android:background">#663b4351</item>
     </style>
+
     <style name="my_text_view">
         <item name="android:fontFamily">@font/aldrich</item>
         <item name="android:textSize">@dimen/text_size</item>
     </style>
 
+    <style name="text_view_list">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_list</item>
+        <item name="android:text">@string/date</item>
+    </style>
 
 </resources>

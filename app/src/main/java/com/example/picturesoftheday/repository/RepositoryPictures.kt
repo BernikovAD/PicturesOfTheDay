@@ -6,7 +6,7 @@ import com.example.picturesoftheday.room.PicturesDao
 
 class RepositoryPictures(private val picturesDao: PicturesDao) {
 
-    val readAllData: LiveData<List<EntityPictures>> = picturesDao.readAllData()
+    val readAllData: LiveData<MutableList<EntityPictures>> = picturesDao.readAllData()
 
     fun addPictures(entityPictures: EntityPictures) {
         picturesDao.addPOD(entityPictures)

@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class PicturesViewModel(application: Application):AndroidViewModel(application) {
 
-    val readAllData:LiveData<List<EntityPictures>>
+    val readAllData:LiveData<MutableList<EntityPictures>>
     private val repository : RepositoryPictures
 
     init {

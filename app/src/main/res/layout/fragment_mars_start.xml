@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/picture_of_the_day_from_mars"
-        android:textSize="30sp"
+        android:textSize="@dimen/text_size_mars"
         android:textStyle="bold"
         android:alpha="0.0"
         app:layout_constraintBottom_toTopOf="@+id/img_mars"

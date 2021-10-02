@@ -11,7 +11,7 @@ interface PicturesDao {
     fun addPOD(entityPOD: EntityPictures)
 
     @Query("SELECT * FROM POD_table ORDER BY id ASC")
-    fun readAllData(): LiveData<List<EntityPictures>>
+    fun readAllData(): LiveData<MutableList<EntityPictures>>
 
     @Delete
      fun deletePicture(entityPOD: EntityPictures)
