@@ -3,8 +3,13 @@ package com.example.picturesoftheday.view.planets
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,7 +47,7 @@ class FragmentSolar : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLiveData().observe(viewLifecycleOwner, { render(it) })
-
+        var text="Solar flares from $startDate to $endDate"
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             binding.datePickerStart.setOnDateChangedListener { _, i, i2, i3 ->
                 startDate = "$i-0${i2 + 1}-$i3"
@@ -57,7 +62,9 @@ class FragmentSolar : Fragment() {
         binding.buttonToday.setOnClickListener {
             viewModel.getSolarFlare(viewModel.getDate())
         }
-        binding.discription.text = "Solar flares from [$startDate] to [$endDate]"
+
+
+        binding.discription.text = text
         val set = AnimatorSet()
         set.playTogether(arrayOf(30f, -30f).map { translation ->
             ObjectAnimator.ofFloat(binding.logoSolar, "translationY", translation).apply {

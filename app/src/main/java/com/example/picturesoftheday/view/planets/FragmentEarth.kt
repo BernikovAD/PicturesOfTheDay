@@ -5,11 +5,16 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.ClickableSpan
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.text.toSpannable
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -29,6 +34,10 @@ import com.example.picturesoftheday.viewmodel.PicturesViewModel
 import io.reactivex.Completable
 import io.reactivex.subjects.CompletableSubject
 import java.util.*
+import android.text.SpannableString
+
+
+
 
 
 class FragmentEarth : Fragment() {
@@ -42,7 +51,7 @@ class FragmentEarth : Fragment() {
     private val date = Calendar.getInstance()
     private val today = Calendar.getInstance()
     private val videoOfTheDay =
-        "Сегодня у нас без картинки дня, но есть видео дня! Кликни >ЗДЕСЬ< чтобы открыть в новом окне"
+        ("Сегодня у нас без картинки дня, но есть видео дня! Кликни >ЗДЕСЬ< чтобы открыть в новом окне").toSpannable()
     private val viewModel: PODViewModel by lazy {
         ViewModelProvider(this).get(PODViewModel::class.java)
     }
@@ -251,7 +260,11 @@ class FragmentEarth : Fragment() {
                 else {
                     showPhotoUrl(data.serverResponseData.url, data.serverResponseData.hdurl)
                     var text = "${data.serverResponseData.date}\n${data.serverResponseData.title}"
-                    binding.textDiscriptionPOD.text = text
+                    val spannable = SpannableStringBuilder(text)
+                    spannable.setSpan(ForegroundColorSpan(resources.getColor(R.color.yelow)),0,
+                        10,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    binding.textDiscriptionPOD.text = spannable
+
                 }
 
             }
@@ -264,7 +277,12 @@ class FragmentEarth : Fragment() {
     private fun showAVideoUrl(videoUrl: String?) = with(binding) {
         binding.includeEarth.imageViewPOD.visibility = View.GONE
         binding.includeEarth.videoOfTheDay.visibility = View.VISIBLE
-        binding.includeEarth.videoOfTheDay.text = videoOfTheDay
+        val spannable: Spannable = SpannableString(videoOfTheDay)
+        spannable.setSpan(object : ClickableSpan() {
+            override fun onClick(view: View) {
+                Toast.makeText(requireContext(),"Click youtube.com",Toast.LENGTH_SHORT).show()
+            } },58, 65,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        binding.includeEarth.videoOfTheDay.text = spannable
         binding.includeEarth.videoOfTheDay.setOnClickListener {
             val i = Intent(Intent.ACTION_VIEW).apply {
                 data = Uri.parse(videoUrl)
