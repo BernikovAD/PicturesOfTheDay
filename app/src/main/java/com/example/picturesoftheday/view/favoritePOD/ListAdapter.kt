@@ -86,6 +86,7 @@ class ListAdapter(
     }
 
     override fun onItemDismiss(position: Int) {
+        viewModel.deleteUser(picturesList[position].first)
         picturesList.removeAt(position)
         notifyItemRemoved(position)
     }
@@ -104,6 +105,7 @@ class ListAdapter(
         override fun bind(pair: Pair<EntityPictures, Boolean>) {
             CustomRowItemBinding.bind(itemView).apply {
                 textDatePictureOfTheDay.text = pair.first.date
+                miniPictureUrl.load(pair.first.url)
                 pictureUrl.load(pair.first.url)
                 pictureUrl.visibility = if (pair.second) View.VISIBLE else View.GONE
                 constraintItem.setOnClickListener {

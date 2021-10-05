@@ -26,4 +26,5 @@
     <dimen name="text_size_video">20sp</dimen>
     <dimen name="width_like">50dp</dimen>
     <dimen name="height_like">50dp</dimen>
+    <dimen name="size_mini_picture">60dp</dimen>
 </resources>

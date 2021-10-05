@@ -26,8 +26,6 @@ class FragmentFavoritePictures : Fragment() {
     lateinit var itemTouchHelper: ItemTouchHelper
     companion object {
         fun newInstance() = FragmentFavoritePictures()
-        private const val TYPE_ENTITY = 0
-        private const val TYPE_HEADER = 1
     }
 
     private val picturesViewModel: PicturesViewModel by lazy {
@@ -46,9 +44,7 @@ class FragmentFavoritePictures : Fragment() {
         _binding = FragmentFavoritePicturesBinding.inflate(inflater, container, false)
         val adapter = ListAdapter(
             object : OnListItemClickListener {
-            override fun onItemClick(entityPictures: EntityPictures) {
-                Toast.makeText(requireContext(),entityPictures.date,Toast.LENGTH_SHORT).show()
-            }
+            override fun onItemClick(entityPictures: EntityPictures) {}
         },object: ListAdapter.OnStartDragListener {
                 override fun onStartDrag(viewHolder: RecyclerView.ViewHolder) {
                     itemTouchHelper.startDrag(viewHolder)
