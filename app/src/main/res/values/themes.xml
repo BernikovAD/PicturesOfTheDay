@@ -47,7 +47,9 @@
         <item name="fontFamily">@font/arbutus</item>
         <item name="textInputStyle">@style/CustomOutlinedBox</item>
     </style>
-
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/gradient_splash</item>
+    </style>
 
     <!--  style -->
     <style name="CustomOutlinedBox" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
