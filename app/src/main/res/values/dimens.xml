@@ -27,4 +27,6 @@
     <dimen name="width_like">50dp</dimen>
     <dimen name="height_like">50dp</dimen>
     <dimen name="size_mini_picture">60dp</dimen>
+    <dimen name="padding_text_header">15dp</dimen>
+    <dimen name="text_size_header">30sp</dimen>
 </resources>

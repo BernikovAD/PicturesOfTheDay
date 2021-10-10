@@ -1,6 +1,7 @@
 package com.example.picturesoftheday.view.favoritePOD
 
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,8 @@ import com.example.picturesoftheday.viewmodel.PicturesViewModel
 class ListAdapter(
     private var onListItemClickListener: OnListItemClickListener,
     private var dragListener: OnStartDragListener,
-    private val viewModel: PicturesViewModel
+    private val viewModel: PicturesViewModel,
+    var isRemove: Boolean
 ) : RecyclerView.Adapter<BaseViewHolder>(), ItemTouchHelperAdapter {
     private var picturesList: MutableList<Pair<EntityPictures, Boolean>> = ArrayList()
 
@@ -23,6 +25,8 @@ class ListAdapter(
         private const val TYPE_ENTITY = 0
         private const val TYPE_HEADER = 1
     }
+
+    //var isRemove: Boolean = false
 
     interface OnStartDragListener {
         fun onStartDrag(viewHolder: RecyclerView.ViewHolder)
@@ -65,11 +69,6 @@ class ListAdapter(
         (holder).bind(picturesList[position])
     }
 
-    private fun removeItem(view: View, position: Int) {
-        viewModel.deleteUser(picturesList[position].first)
-        picturesList.removeAt(position)
-        notifyItemRemoved(position)
-    }
 
     fun setData(entityPictures: List<EntityPictures>) {
         entityPictures.forEach {
@@ -106,24 +105,26 @@ class ListAdapter(
             CustomRowItemBinding.bind(itemView).apply {
                 textDatePictureOfTheDay.text = pair.first.date
                 miniPictureUrl.load(pair.first.url)
+                miniPictureUrl.visibility = if (pair.second) View.GONE else View.VISIBLE
                 pictureUrl.load(pair.first.url)
                 pictureUrl.visibility = if (pair.second) View.VISIBLE else View.GONE
                 constraintItem.setOnClickListener {
-                     toggleText()
+                    toggleText()
                     onListItemClickListener.onItemClick(pair.first)
                 }
-                removeItem.setOnClickListener {
-                    removeItem(it, position)
-                }
+                Log.i("MyTag", isRemove.toString())
+                dragHandleImageView.visibility = if (isRemove) View.VISIBLE else View.INVISIBLE
 
             }
         }
+
         private fun toggleText() {
             picturesList[layoutPosition] = picturesList[layoutPosition].let {
                 it.first to !it.second
             }
             notifyItemChanged(layoutPosition)
         }
+
         override fun onItemSelected() {
             itemView.setBackgroundColor(Color.LTGRAY)
         }

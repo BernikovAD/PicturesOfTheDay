@@ -24,6 +24,7 @@ class FragmentFavoritePictures : Fragment() {
     private val binding: FragmentFavoritePicturesBinding
         get() = _binding!!
     lateinit var itemTouchHelper: ItemTouchHelper
+    var isRemove:Boolean = false
     companion object {
         fun newInstance() = FragmentFavoritePictures()
     }
@@ -42,16 +43,12 @@ class FragmentFavoritePictures : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFavoritePicturesBinding.inflate(inflater, container, false)
-        val adapter = ListAdapter(
-            object : OnListItemClickListener {
-            override fun onItemClick(entityPictures: EntityPictures) {}
-        },object: ListAdapter.OnStartDragListener {
-                override fun onStartDrag(viewHolder: RecyclerView.ViewHolder) {
-                    itemTouchHelper.startDrag(viewHolder)
-                }
-
-            },
-            picturesViewModel)
+        val adapter = listAdapter()
+        binding.remove.setOnClickListener { isRemove = !isRemove
+            Log.i("MyTag", isRemove.toString())
+            listAdapter()
+            adapter.notifyDataSetChanged();
+             }
         itemTouchHelper = ItemTouchHelper(ItemTouchHelperCallback(adapter))
         itemTouchHelper.attachToRecyclerView(binding.recyclerview)
         val recyclerView = binding.recyclerview
@@ -61,6 +58,18 @@ class FragmentFavoritePictures : Fragment() {
         })
         return binding.root
     }
+
+    private fun listAdapter() = ListAdapter(
+        object : OnListItemClickListener {
+                override fun onItemClick(entityPictures: EntityPictures) {}
+            }, object : ListAdapter.OnStartDragListener {
+            override fun onStartDrag(viewHolder: RecyclerView.ViewHolder) {
+                itemTouchHelper.startDrag(viewHolder)
+            }
+
+        },
+        picturesViewModel, isRemove
+    )
 }
 class ItemTouchHelperCallback(private val adapter: ListAdapter) :
     ItemTouchHelper.Callback() {

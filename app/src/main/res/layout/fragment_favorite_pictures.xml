@@ -6,12 +6,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.favoritePOD.FragmentFavoritePictures">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/design_default_color_background"
+        android:fitsSystemWindows="true"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/toolbarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Favorite pictures"
+                android:textColor="@color/black"
+                android:textSize="28sp" />
+            <ImageView
+                android:id="@+id/remove"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="end|center_vertical"
+                android:padding="12dp"
+                app:srcCompat="@drawable/icon_remove"
+                app:tint="@color/grey" />
+        </FrameLayout>
+    </androidx.appcompat.widget.Toolbar>
 <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/recyclerview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="?actionBarSize"
     android:layout_marginBottom="?actionBarSize"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    tools:listitem="@layout/custom_row_item"
     app:layout_constraintHorizontal_bias="0.0" />
 
 </FrameLayout>

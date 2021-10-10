@@ -1,13 +1,13 @@
 package com.example.picturesoftheday.view.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.picturesoftheday.R
 import com.example.picturesoftheday.databinding.ActivityMainBinding
-import com.example.picturesoftheday.view.planets.FragmentEarth
-import com.example.picturesoftheday.view.planets.FragmentMars
 import com.example.picturesoftheday.settings.PrefConfing
 import com.example.picturesoftheday.view.favoritePOD.FragmentFavoritePictures
+import com.example.picturesoftheday.view.planets.FragmentEarth
+import com.example.picturesoftheday.view.planets.FragmentMars
 import com.example.picturesoftheday.view.planets.FragmentSolar
 import com.example.picturesoftheday.view.settings.SettingsFragment
 
@@ -52,7 +52,6 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
         binding.bottomAppBar.getOrCreateBadge(R.id.app_bar_settings)
     }
 

@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraint_item"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    tools:ignore="ExtraText">
 
     <com.example.picturesoftheday.utils.CustomImageView
         android:id="@+id/miniPictureUrl"
         android:layout_width="@dimen/size_mini_picture"
         android:layout_height="@dimen/size_mini_picture"
         android:padding="@dimen/padding_custom_image_list"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/text_date_picture_of_the_day"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         tools:visibility="visible" />
+
     <TextView
         android:id="@+id/text_date_picture_of_the_day"
         style="@style/text_view_list"
@@ -37,23 +39,15 @@
         app:layout_constraintTop_toBottomOf="@+id/text_date_picture_of_the_day"
         tools:visibility="visible" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/removeItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_image_remove"
-        app:layout_constraintBottom_toTopOf="@+id/pictureUrl"
-        app:layout_constraintEnd_toStartOf="@+id/dragHandleImageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_delete" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/dragHandleImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margi_image_burger"
+        android:visibility="visible"
         android:tint="@color/cardview_shadow_start_color"
-        app:layout_constraintBottom_toTopOf="@+id/pictureUrl"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_burger" />
